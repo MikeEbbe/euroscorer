@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('participants', function (Blueprint $table) {
+            $table->id();
+            $table->integer('year');
+            $table->foreignId('country_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('song');
+            $table->integer('semi_final')->nullable();
+            $table->boolean('final');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('participants');
+    }
+};
