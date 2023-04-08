@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
     // Route::get('/participants', function() {
     //     return Participant::with('country')->get();
     // });
@@ -28,7 +24,32 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     //     return Score::with('user', 'participant')->get();
     // });
 
+    Route::group(['middleware' => ['guest']], function () {
+        /**
+         * Home Routes
+         */
+        // Route::get('/', function() {
+        //     return redirect('/login');
+        // });
+        /**
+         * Register Routes
+         */
+        Route::get('/register', 'RegisterController@show')->name('register.show');
+        Route::post('/register', 'RegisterController@register')->name('register.perform');
+
+        /**
+         * Login Routes
+         */
+        Route::get('/login', 'LoginController@show')->name('login.show');
+        Route::post('/login', 'LoginController@login')->name('login.perform');
+    });
+
     Route::group(['middleware' => ['auth']], function () {
+        /**
+         * Logout Routes
+         */
+        Route::get('/logout', 'LoginController@logout')->name('logout.perform');
+        Route::get('/', 'HomeController@index')->name('home.index');
     });
 });
 
