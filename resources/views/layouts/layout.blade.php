@@ -14,7 +14,7 @@
     </style>
 </head>
 
-<body class="text-center">
+<body>
     @yield('content')
 </body>
 

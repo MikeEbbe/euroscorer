@@ -16,21 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
-    // Route::get('/participants', function() {
-    //     return Participant::with('country')->get();
-    // });
-
-    // Route::get('/scores', function() {
-    //     return Score::with('user', 'participant')->get();
-    // });
-
     Route::group(['middleware' => ['guest']], function () {
-        /**
-         * Home Routes
-         */
-        // Route::get('/', function() {
-        //     return redirect('/login');
-        // });
         /**
          * Register Routes
          */
@@ -50,13 +36,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          */
         Route::get('/logout', 'LoginController@logout')->name('logout.perform');
         Route::get('/', 'HomeController@index')->name('home.index');
+        Route::get('{year}/semi-final/{stage}', 'SemiFinalController@index')->name('semi-final.index');
+        Route::get('{year}/final', 'FinalController@index')->name('final.index');
     });
 });
 
 // interfaces:
-//  home knop leidt door naar finale interface van huidig eurovisie seizoen
+//  home leidt door naar finale interface van huidig eurovisie seizoen
 //  interface voor elk eurovisie seizoen: 2021, 2022 en 2023:
-//      1e halve finale met uitslagen
-//      2e halve finale met uitslagen
-//      finale met uitslagen
+//      1e halve finale met uitslagen -> scores invullen
+//      2e halve finale met uitslagen -> scores invullen
+//      finale met uitslagen -> scores invullen
 //      scores invullen
