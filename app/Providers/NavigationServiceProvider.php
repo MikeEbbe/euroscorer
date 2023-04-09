@@ -6,6 +6,7 @@ use App\Models\Edition;
 use App\Models\Participant;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class NavigationServiceProvider extends ServiceProvider
 {
@@ -22,10 +23,11 @@ class NavigationServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Return nav with years
+        // Return nav with editions
         View::composer('layouts.partials.nav', function ($view) {
-            $years = Edition::distinct()->pluck('year')->reverse();
-            $view->with('years', $years);
+            $columns = Schema::getColumnListing('editions');
+            $editions = Edition::distinct()->select($columns)->get();
+            $view->with('editions', $editions);
         });
     }
 }

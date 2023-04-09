@@ -10,7 +10,7 @@
                     type="button" data-te-collapse-init data-te-target="#navbarSupportedContentY"
                     aria-controls="navbarSupportedContentY" aria-expanded="false" aria-label="Toggle navigation">
                     <!-- Hamburger menu icon -->
-                    <span class="[&>svg]:w-5">
+                    <span id="hamburger-button" class="[&>svg]:w-5">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -23,18 +23,39 @@
             <!-- Navigation links -->
             <div class="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto"
                 id="navbarSupportedContentY" data-te-collapse-item>
-                <ul class="mr-auto flex flex-col lg:flex-row bg-gray-50 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700"
+                <ul class="mx-auto flex flex-col lg:flex-row-reverse bg-gray-50 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700"
                     data-te-navbar-nav-ref>
                     <!-- Generate menu items for each year -->
-                    @foreach($years as $year)
+                    @foreach($editions as $edition)
                     <li data-te-nav-item-ref>
-                        <a class="block transition duration-150 ease-in-out lg:p-2 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                            href="#!" data-te-nav-link-ref data-te-ripple-init data-te-ripple-color="light">{{ $year
-                            }}</a>
+                        <div class="relative group dropdown">
+                            <a class="block lg:p-2 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                                href="#!" data-te-nav-link-ref data-te-ripple-init data-te-ripple-color="light">{{
+                                $edition->city }} {{ $edition->year }}</a>
+                            <div class="group-hover:block dropdown-menu absolute w-max hidden">
+                                <ul
+                                    class="top-0 left-0 mt-1 bg-white rounded-md shadow-lg z-10 px-3 py-1 divide-y divide-gray-100 dark:bg-gray-800 dark:divide-gray-700">
+                                    <li
+                                        class="group relative block py-2 text-gray-800 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500">
+                                        <a href="/{{ $edition->year }}/final">Finale</a>
+                                    </li>
+                                    <li
+                                        class="group relative block py-2 text-gray-800 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500">
+                                        <a href="/{{ $edition->year }}/semi-final/1">Halve Finale 1</a>
+                                    </li>
+                                    <li
+                                        class="group relative block py-2 text-gray-800 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500">
+                                        <a href="/{{ $edition->year }}/semi-final/2">Halve Finale 2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </li>
                     @endforeach
                 </ul>
             </div>
+
+            <!-- Dark/Light mode button -->
             <div>
                 <button id="toggle-mode" type="button"
                     class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
