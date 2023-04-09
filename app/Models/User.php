@@ -42,4 +42,12 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    /**
+     * Scores relationship
+     */
+    public function scores()
+    {
+        return $this->hasMany(Score::class);
+    }
 }

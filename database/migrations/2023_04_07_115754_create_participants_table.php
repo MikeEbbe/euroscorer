@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('participants', function (Blueprint $table) {
             $table->id();
-            $table->integer('year');
+            $table->foreignId('edition_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('country_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('song');
             $table->integer('semi_final')->nullable();

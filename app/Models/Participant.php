@@ -21,12 +21,28 @@ class Participant extends Model
         'semi_final',
         'final',
     ];
-    
+
+    /**
+     * Edition relationship
+     */
+    public function edition()
+    {
+        return $this->belongsTo(Edition::class);
+    }
+
     /**
      * Country relationship
      */
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    /**
+     * Scores relationship
+     */
+    public function scores()
+    {
+        return $this->hasMany(Score::class);
     }
 }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 
 <head>
     <meta charset="utf-8">
@@ -14,8 +14,11 @@
     </style>
 </head>
 
-<body>
+<body class="bg-gray-50 dark:bg-gray-900">
+    @include('layouts.partials.nav')
     @yield('content')
 </body>
+
+@vite('resources/js/app.js')
 
 </html>
