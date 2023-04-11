@@ -19,7 +19,7 @@ class Participant extends Model
         'year',
         'song',
         'semi_final',
-        'final',
+        'is_in_final',
     ];
 
     /**

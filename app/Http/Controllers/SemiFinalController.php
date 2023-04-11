@@ -29,7 +29,7 @@ class SemiFinalController extends Controller
         }
 
         $participants = $this->participantsInSemiFinal($year, $stage);
-        return view('home.semi_final', compact('participants'));
+        return view('home.semi_final', compact('participants', 'stage'));
     }
 
     /**
@@ -55,6 +55,7 @@ class SemiFinalController extends Controller
             ->with(['scores' => function ($query) use ($userId) {
                 $query->where('user_id', $userId);
             }])
+            ->orderBy('semi_final_order')
             ->get();
 
         return $participants;

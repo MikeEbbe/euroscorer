@@ -13,7 +13,7 @@ html.classList.add('hidden'); // Hide app until it's done applying the mode
  * toggle the mode value between 'dark' and 'light' 
  * and update the mode
  */
-toggleModeButton.addEventListener('click', function () {
+toggleModeButton && toggleModeButton.addEventListener('click', function () {
     setModeValue = setModeValue === 'dark' ? 'light' : 'dark';
     setMode(setModeValue);
 });
@@ -28,11 +28,11 @@ function setMode(mode) {
     // Change the logo image based on the mode value (if the logo element exists)
     logo && (logo.src = mode === 'dark' ? 'storage/app-logo-white.png' : 'storage/app-logo.png');
     // Change the hamburger button color
-    hamburgerButton.style.color = mode === 'dark' ? 'white' : '#111827';    
+    hamburgerButton && (hamburgerButton.style.color = mode === 'dark' ? 'white' : '#111827');
 
     // Toggle the icon
-    darkIcon.classList.toggle('hidden', mode === 'dark');
-    lightIcon.classList.toggle('hidden', mode !== 'dark');
+    darkIcon && darkIcon.classList.toggle('hidden', mode === 'dark');
+    lightIcon && lightIcon.classList.toggle('hidden', mode !== 'dark');
 
     // Store the set mode in user's local storage
     localStorage.setItem('mode', mode);

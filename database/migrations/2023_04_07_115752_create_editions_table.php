@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('editions', function (Blueprint $table) {
             $table->id();
-            $table->integer('year');
+            $table->tinyInteger('year')->unsigned();
             $table->string('city');
             $table->string('logo')->nullable();
             $table->timestamps();

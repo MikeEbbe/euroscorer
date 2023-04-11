@@ -16,8 +16,10 @@ return new class extends Migration
             $table->foreignId('edition_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('country_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('song');
-            $table->integer('semi_final')->nullable();
-            $table->boolean('final');
+            $table->tinyInteger('semi_final')->nullable()->unsigned();
+            $table->boolean('is_in_final');
+            $table->tinyInteger('semi_final_order')->nullable()->unsigned();
+            $table->tinyInteger('final_order')->nullable()->unsigned();
             $table->timestamps();
         });
     }

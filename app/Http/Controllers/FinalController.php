@@ -49,10 +49,11 @@ class FinalController extends Controller
     {
         $participants = Participant::whereHas('edition', function ($query) use ($year) {
             $query->where('year', $year);
-        })->where('final', true)
+        })->where('is_in_final', true)
             ->with(['scores' => function ($query) use ($userId) {
                 $query->where('user_id', $userId);
             }])
+            ->orderBy('final_order')
             ->get();
 
         return $participants;

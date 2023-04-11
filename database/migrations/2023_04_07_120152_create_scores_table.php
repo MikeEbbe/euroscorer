@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('participant_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->double('performance')->nullable();
-            $table->double('song')->nullable();
-            $table->double('total')->nullable();
+            $table->float('performance', 2, 1, true)->nullable()->unsigned();
+            $table->double('song', 2, 1, true)->nullable()->unsigned();
+            $table->double('total', 2, 1, true)->nullable()->unsigned();
             $table->timestamps();
         });
     }

@@ -30,7 +30,7 @@
                     <li data-te-nav-item-ref>
                         <div class="relative group dropdown">
                             <a class="block lg:p-2 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                                href="#!" data-te-nav-link-ref data-te-ripple-init data-te-ripple-color="light">{{
+                                href="/{{ $edition->year }}/final" data-te-nav-link-ref data-te-ripple-init data-te-ripple-color="light">{{
                                 $edition->city }} {{ $edition->year }}</a>
                             <div class="group-hover:block dropdown-menu absolute w-max hidden">
                                 <ul
@@ -55,10 +55,14 @@
                 </ul>
             </div>
 
+            <div class="mr-4 text-gray-900 dark:text-white">
+                <a href="/logout">Uitloggen</a>
+            </div>
+
             <!-- Dark/Light mode button -->
             <div>
                 <button id="toggle-mode" type="button"
-                    class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                    class="text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
                     <svg id="toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>

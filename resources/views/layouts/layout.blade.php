@@ -15,7 +15,9 @@
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">
+    @auth
     @include('layouts.partials.nav')
+    @endauth
     @yield('content')
 </body>
 
