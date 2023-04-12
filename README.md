@@ -1,6 +1,4 @@
-[![Eurovision App Logo](https://eurovision.473680590.xyz/storage/app-logo-white.png#gh-dark-mode-only)](https://eurovision.473680590.xyz)
-[![Eurovision App Logo](https://eurovision.473680590.xyz/storage/app-logo.png#gh-light-mode-only)](https://eurovision.473680590.xyz)
-
+![GitHub-Mark-Light](https://eurovision.473680590.xyz/storage/app-logo-white.png#gh-dark-mode-only)![GitHub-Mark-Dark](https://eurovision.473680590.xyz/storage/app-logo.png#gh-light-mode-only)
 
 
 # Instructions for setting up a new site on a subdomain on the server
@@ -65,7 +63,7 @@ Refer to the "Image editor" document for the login credentials to the Hetzner Ub
 
   
 
-1. Open the Hetzner DNS Console ([https://dns.hetzner.com/](https://dns.hetzner.com/)).
+1. Open the [Hetzner DNS Console](https://dns.hetzner.com/).
 
 2. Click on the zone for the `473680590.xyz` domain name.
 

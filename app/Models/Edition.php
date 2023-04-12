@@ -22,6 +22,14 @@ class Edition extends Model
     ];
 
     /**
+     * Country relationship
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    /**
      * Scores relationship
      */
     public function participants()

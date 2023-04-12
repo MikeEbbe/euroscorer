@@ -18,17 +18,17 @@ class EditionSeeder extends Seeder
                 [
                     "year" => 2021,
                     "city" => 'Rotterdam',
-                    "logo" => ''
+                    "country_id" => 25,
                 ],
                 [
                     "year" => 2022,
                     "city" => 'Turijn',
-                    "logo" => ''
+                    "country_id" => 18,
                 ],
                 [
                     "year" => 2023,
                     "city" => 'Liverpool',
-                    "logo" => ''
+                    "country_id" => 39,
                 ],
             ]
         );

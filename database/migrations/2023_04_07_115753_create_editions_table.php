@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->smallInteger('year')->unsigned();
             $table->string('city');
-            $table->string('logo')->nullable();
+            $table->foreignId('country_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

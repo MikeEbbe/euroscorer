@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Edition;
 use App\Models\Participant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,8 +31,9 @@ class SemiFinalController extends Controller
 
         $user = Auth::user();
         $scores = $this->scoresByUserYearAndStage($user, $year, $stage);
+        $edition = Edition::where('year', $year)->first();
 
-        return view('home.semi_final', compact('scores', 'year', 'stage'));
+        return view('home.semi_final', compact('scores', 'edition', 'stage'));
     }
 
     /**

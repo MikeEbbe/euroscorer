@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Edition;
 use App\Models\Participant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,8 +30,9 @@ class FinalController extends Controller
 
         $user = Auth::user();
         $scores = $this->finalScoresByUserAndYear($user, $year);
+        $edition = Edition::where('year', $year)->first();
 
-        return view('home.final', compact('scores', 'year'));
+        return view('home.final', compact('scores', 'edition'));
     }
 
     /**
@@ -44,17 +46,6 @@ class FinalController extends Controller
                 $query->where('year', $year);
             });
         })->orderByDesc('total')->get();
-        // $participants = Participant::select('participants.*')
-        //     ->leftJoin('scores', function ($join) use ($userId) {
-        //         $join->on('participants.id', '=', 'scores.participant_id')
-        //             ->where('scores.user_id', '=', $userId);
-        //     })
-        //     ->whereHas('edition', function ($query) use ($year) {
-        //         $query->where('year', $year);
-        //     })->where('is_in_final', true)
-        //     ->orderByDesc('scores.total')
-        //     ->orderBy('final_order')
-        //     ->get();
 
         return $scores;
     }
