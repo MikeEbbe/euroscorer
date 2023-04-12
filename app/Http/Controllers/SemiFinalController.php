@@ -28,36 +28,24 @@ class SemiFinalController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $participants = $this->participantsInSemiFinal($year, $stage);
-        return view('home.semi_final', compact('participants', 'year', 'stage'));
+        $user = Auth::user();
+        $scores = $this->scoresByUserYearAndStage($user, $year, $stage);
+
+        return view('home.semi_final', compact('scores', 'year', 'stage'));
     }
 
     /**
-     * Returns the participants in a semi final
-     * by their year and stage.
+     * Loads all scores for a user by their given year and stage,
+     * sorted by the assigned user score.
      */
-    public function participantsInSemiFinal($year, $stage)
+    public function scoresByUserYearAndStage($user, $year, $stage)
     {
-        $userId = Auth::id();
-        $participants = $this->participantsByUserYearAndStage($userId, $year, $stage);
-        return $participants;
-    }
+        $scores = $user->scores()->with('participant')->whereHas('participant', function ($query) use ($year, $stage) {
+            $query->where('semi_final', $stage)->whereHas('edition', function ($query) use ($year) {
+                $query->where('year', $year);
+            });
+        })->orderByDesc('total')->get();
 
-    /**
-     * Loads all participants by their given year and stage,
-     * along with the user's scores assigned to them.
-     */
-    public function participantsByUserYearAndStage($userId, $year, $stage)
-    {
-        $participants = Participant::whereHas('edition', function ($query) use ($year) {
-            $query->where('year', $year);
-        })->where('semi_final', $stage)
-            ->with(['scores' => function ($query) use ($userId) {
-                $query->where('user_id', $userId);
-            }])
-            ->orderBy('semi_final_order')
-            ->get();
-
-        return $participants;
+        return $scores;
     }
 }

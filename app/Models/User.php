@@ -50,4 +50,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Score::class);
     }
+
+    /**
+     * Indirect editions
+     */
+    public function editions()
+    {
+        return Edition::whereHas('participants.scores.user', function ($query) {
+            $query->where('id', $this->id);
+        })->distinct()->get();
+    }
 }

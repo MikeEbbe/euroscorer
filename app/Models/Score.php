@@ -16,6 +16,7 @@ class Score extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'participant_id',
         'performance',
         'song',
         'total',

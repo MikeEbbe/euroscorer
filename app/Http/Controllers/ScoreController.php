@@ -39,12 +39,16 @@ class ScoreController extends Controller
         if (url()->previous() != session('original_url')) {
             session(['original_url' => url()->previous()]); // Set the original URL
         }
+        $redirect_url = session('original_url');
+        if (strpos($redirect_url, '/semi-final') === false && strpos($redirect_url, '/final') === false) {
+            $redirect_url = '/' . $year . '/final';
+        }
 
         $scores = Auth::user()->scores; // Scores of authenticated user
         $score = $scores->firstWhere('id', $id);
 
         // Return the score view with the score
-        return view('home.edit_score', compact('score', 'year', 'id'));
+        return view('home.edit_score', compact('score', 'year', 'id', 'redirect_url'));
     }
 
     /**
@@ -98,7 +102,7 @@ class ScoreController extends Controller
         $score->song = $songScore;
         $score->total = $totalScore;
         $score->save();
-        
+
         return redirect(session('original_url')); // Redirect to original URL
     }
 }

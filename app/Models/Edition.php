@@ -20,4 +20,12 @@ class Edition extends Model
         'city',
         'logo',
     ];
+
+    /**
+     * Scores relationship
+     */
+    public function participants()
+    {
+        return $this->hasMany(Participant::class);
+    }
 }

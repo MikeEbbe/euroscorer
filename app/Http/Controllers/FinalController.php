@@ -27,35 +27,35 @@ class FinalController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $participants = $this->participantsInFinal($year);
-        return view('home.final', compact('participants', 'year'));
+        $user = Auth::user();
+        $scores = $this->finalScoresByUserAndYear($user, $year);
+
+        return view('home.final', compact('scores', 'year'));
     }
 
     /**
-     * Returns the participants in a final by their year
+     * Loads all scores in the final for a user by their given year,
+     * sorted by the assigned user score.
      */
-    public function participantsInFinal($year)
+    public function finalScoresByUserAndYear($user, $year)
     {
-        $userId = Auth::id();
-        $participants = $this->finalParticipantsByUserAndYear($userId, $year);
-        return $participants;
-    }
+        $scores = $user->scores()->with('participant')->whereHas('participant', function ($query) use ($year) {
+            $query->where('is_in_final', true)->whereHas('edition', function ($query) use ($year) {
+                $query->where('year', $year);
+            });
+        })->orderByDesc('total')->get();
+        // $participants = Participant::select('participants.*')
+        //     ->leftJoin('scores', function ($join) use ($userId) {
+        //         $join->on('participants.id', '=', 'scores.participant_id')
+        //             ->where('scores.user_id', '=', $userId);
+        //     })
+        //     ->whereHas('edition', function ($query) use ($year) {
+        //         $query->where('year', $year);
+        //     })->where('is_in_final', true)
+        //     ->orderByDesc('scores.total')
+        //     ->orderBy('final_order')
+        //     ->get();
 
-    /**
-     * Loads all participants in the final by their given year,
-     * along with the user's scores assigned to them.
-     */
-    public function finalParticipantsByUserAndYear($userId, $year)
-    {
-        $participants = Participant::whereHas('edition', function ($query) use ($year) {
-            $query->where('year', $year);
-        })->where('is_in_final', true)
-            ->with(['scores' => function ($query) use ($userId) {
-                $query->where('user_id', $userId);
-            }])
-            ->orderBy('final_order')
-            ->get();
-
-        return $participants;
+        return $scores;
     }
 }

@@ -724,7 +724,7 @@ class ParticipantSeeder extends Seeder
                     "is_in_final" => TRUE,
                     "semi_final_order" => null,
                     "final_order" => 22,
-                    "country_id" => 1,
+                    "country_id" => 39,
                 ],
                 [
                     "edition_id" => 3,
