@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    /**
+     * This method redirects the user to the most recent edition
+     * of the Eurovision Song Contest
+     */
     public function index()
     {
         $year = Edition::max('year'); // Get latest year

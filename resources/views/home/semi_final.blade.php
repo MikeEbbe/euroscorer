@@ -33,7 +33,7 @@
                 <td class="px-1 py-1 md:px-6 md:py-4 text-gray-900 dark:text-white">{{
                     $participant->scores->first()->total }}</td>
                 <td class="px-1 py-1 md:px-6 md:py-4 text-gray-900 dark:text-white">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Bewerken</a>
+                    <a href="/{{ $year }}/score/{{ $participant->scores->first()->id }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Bewerken</a>
                 </td>
             </tr>
             @endforeach

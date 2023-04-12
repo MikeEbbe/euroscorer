@@ -29,7 +29,7 @@ class SemiFinalController extends Controller
         }
 
         $participants = $this->participantsInSemiFinal($year, $stage);
-        return view('home.semi_final', compact('participants', 'stage'));
+        return view('home.semi_final', compact('participants', 'year', 'stage'));
     }
 
     /**

@@ -38,6 +38,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/', 'HomeController@index')->name('home.index');
         Route::get('{year}/semi-final/{stage}', 'SemiFinalController@index')->name('semi-final.index');
         Route::get('{year}/final', 'FinalController@index')->name('final.index');
+        Route::get('{year}/score/{id}', 'ScoreController@index')->name('score.index');
+        Route::put('{year}/score/{id}', 'ScoreController@update')->name('score.update');
     });
 });
 

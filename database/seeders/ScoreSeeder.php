@@ -672,6 +672,13 @@ class ScoreSeeder extends Seeder
                     "performance" => 0,
                     "song" => 0,
                     "total" => 0
+                ],
+                [
+                    "user_id" => 2,
+                    "participant_id" => 94,
+                    "performance" => 5,
+                    "song" => 7,
+                    "total" => 5
                 ]
             ]
         );

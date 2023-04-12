@@ -28,7 +28,7 @@ class FinalController extends Controller
         }
 
         $participants = $this->participantsInFinal($year);
-        return view('home.final', compact('participants'));
+        return view('home.final', compact('participants', 'year'));
     }
 
     /**
