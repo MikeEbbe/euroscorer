@@ -1,6 +1,6 @@
 @if(isset ($errors) && count($errors) > 0)
-<div class="alert alert-warning" role="alert">
-    <ul class="list-unstyled mb-0">
+<div class="text-red-500">
+    <ul class="list-none">
         @foreach($errors->all() as $error)
         <li>{{ $error }}</li>
         @endforeach
@@ -12,14 +12,12 @@
 <?php $data = Illuminate\Support\Facades\Session::get('success'); ?>
 @if (is_array($data))
 @foreach ($data as $msg)
-<div class="alert alert-warning" role="alert">
-    <i class="fa fa-check"></i>
+<div class="text-red-500">
     {{ $msg }}
 </div>
 @endforeach
 @else
-<div class="alert alert-warning" role="alert">
-    <i class="fa fa-check"></i>
+<div class="text-red-500">
     {{ $data }}
 </div>
 @endif
