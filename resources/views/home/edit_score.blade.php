@@ -6,7 +6,7 @@
         Terug
     </a>
     <h1 class="flex-1 text-center my-6 md:my-12 text-xl font-bold text-gray-900 dark:text-white">
-        Edit score
+        Score bewerken
     </h1>
 </div>
 <div class="grid grid-cols-10 mb-8">
@@ -28,7 +28,7 @@
         <div class="px-4 col-span-10 md:col-start-4 md:col-span-4">
             <div class="flex mb-4">
                 <span
-                    class="flex-shrink-0 rounded-l-md px-4 py-3 md:py-2 whitespace-no-wrap text-gray-900 bg-gray-300 dark:bg-gray-700 dark:text-white">Performance</span>
+                    class="flex-shrink-0 rounded-l-md px-4 py-3 md:py-2 whitespace-no-wrap text-gray-900 bg-gray-300 dark:bg-gray-700 dark:text-white">Act</span>
                 <input name="performance"
                     class="rounded-r-md px-4 py-3 md:py-2 w-full border-2 border-gray-300 text-gray-900 bg-white placeholder-gray-400 dark:border-none dark:bg-gray-500 dark:text-white dark:placeholder-gray-300"
                     type="number" value="{{ $score->performance }}" min="0" max="10" step=".5" placeholder="9.5"
@@ -36,7 +36,7 @@
             </div>
             <div class="flex mb-4">
                 <span
-                    class="flex-shrink-0 rounded-l-md px-4 py-3 md:py-2 whitespace-no-wrap text-gray-900 bg-gray-300 dark:bg-gray-700 dark:text-white">Song</span>
+                    class="flex-shrink-0 rounded-l-md px-4 py-3 md:py-2 whitespace-no-wrap text-gray-900 bg-gray-300 dark:bg-gray-700 dark:text-white">Liedje</span>
                 <input name="song"
                     class="rounded-r-md px-4 py-3 md:py-2 w-full border-2 border-gray-300 text-gray-900 bg-white placeholder-gray-400 dark:border-none dark:bg-gray-500 dark:text-white dark:placeholder-gray-300"
                     type="number" value="{{ $score->song }}" min="0" max="10" step=".5" placeholder="6.5" required />

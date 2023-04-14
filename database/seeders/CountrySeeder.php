@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class CountrySeeder extends Seeder
 {
@@ -13,6 +14,9 @@ class CountrySeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+        DB::table('countries')->truncate();
+        
         DB::table('countries')->insert(
             [
                 [
@@ -168,7 +172,7 @@ class CountrySeeder extends Seeder
                     "flag" => "https://flagcdn.com/h120/cz.png"
                 ],
                 [
-                    "name" => "Verenigd Konikrijk",
+                    "name" => "Verenigd Koninkrijk",
                     "flag" => "https://flagcdn.com/h120/gb.png"
                 ],
                 [
@@ -181,5 +185,6 @@ class CountrySeeder extends Seeder
                 ]
             ]
         );
+        Schema::enableForeignKeyConstraints();
     }
 }

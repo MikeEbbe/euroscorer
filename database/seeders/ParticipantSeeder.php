@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class ParticipantSeeder extends Seeder
 {
@@ -13,6 +14,9 @@ class ParticipantSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+        DB::table('participants')->truncate();
+
         DB::table('participants')->insert(
             [
                 [
@@ -861,7 +865,206 @@ class ParticipantSeeder extends Seeder
                     "final_order" => null,
                     "country_id" => 11,
                 ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Breaking My Heart",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 1,
+                    "final_order" => null,
+                    "country_id" => 8,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Future Lover",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 2,
+                    "final_order" => null,
+                    "country_id" => 2,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "D.G.T. (Off and On)",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 3,
+                    "final_order" => null,
+                    "country_id" => 32,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Bridges",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 4,
+                    "final_order" => null,
+                    "country_id" => 10,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Because of You",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 5,
+                    "final_order" => null,
+                    "country_id" => 5,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Break a Broken Heart",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 6,
+                    "final_order" => null,
+                    "country_id" => 7,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Power",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 7,
+                    "final_order" => null,
+                    "country_id" => 16,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "What They Say",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 8,
+                    "final_order" => null,
+                    "country_id" => 14,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Solo",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 9,
+                    "final_order" => null,
+                    "country_id" => 30,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Carpe Diem",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 10,
+                    "final_order" => null,
+                    "country_id" => 36,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Echo",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 11,
+                    "final_order" => null,
+                    "country_id" => 13,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Like an Animal",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 12,
+                    "final_order" => null,
+                    "country_id" => 34,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Who the Hell Is Edgar",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 13,
+                    "final_order" => null,
+                    "country_id" => 29,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Duje",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 14,
+                    "final_order" => null,
+                    "country_id" => 1,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Stay",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 15,
+                    "final_order" => null,
+                    "country_id" => 21,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Promise",
+                    "semi_final" => 2,
+                    "is_in_final" => FALSE,
+                    "semi_final_order" => 16,
+                    "final_order" => null,
+                    "country_id" => 3,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Évidemment",
+                    "semi_final" => null,
+                    "is_in_final" => TRUE,
+                    "semi_final_order" => null,
+                    "final_order" => null,
+                    "country_id" => 12,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Blood & Glitter",
+                    "semi_final" => null,
+                    "is_in_final" => TRUE,
+                    "semi_final_order" => null,
+                    "final_order" => null,
+                    "country_id" => 9,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Due vite",
+                    "semi_final" => null,
+                    "is_in_final" => TRUE,
+                    "semi_final_order" => null,
+                    "final_order" => null,
+                    "country_id" => 18,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Eaea",
+                    "semi_final" => null,
+                    "is_in_final" => TRUE,
+                    "semi_final_order" => null,
+                    "final_order" => null,
+                    "country_id" => 37,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "Heart of Steel",
+                    "semi_final" => null,
+                    "is_in_final" => TRUE,
+                    "semi_final_order" => null,
+                    "final_order" => 19,
+                    "country_id" => 28,
+                ],
+                [
+                    "edition_id" => 3,
+                    "song" => "I Wrote a Song",
+                    "semi_final" => null,
+                    "is_in_final" => TRUE,
+                    "semi_final_order" => null,
+                    "final_order" => 26,
+                    "country_id" => 39,
+                ],
             ]
         );
+        Schema::enableForeignKeyConstraints();
     }
 }
