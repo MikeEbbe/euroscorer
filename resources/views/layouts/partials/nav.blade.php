@@ -1,69 +1,60 @@
-<header>
-    <!-- Navigation bar -->
-    <nav class="relative flex w-full items-center justify-between py-2 border-b-2 border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-b-2 dark:border-gray-700 md:flex-wrap md:justify-start"
-        data-te-navbar-ref>
-        <div class="flex w-full flex-wrap items-center justify-between px-6">
-            <div class="flex items-center">
-                <!-- Hamburger menu button -->
-                <button
-                    class="mr-2 border-0 bg-transparent py-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
-                    type="button" data-te-collapse-init data-te-target="#navbarSupportedContentY"
-                    aria-controls="navbarSupportedContentY" aria-expanded="false" aria-label="Toggle navigation">
-                    <!-- Hamburger menu icon -->
-                    <span id="hamburger-button" class="[&>svg]:w-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="h-6 w-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+<!-- Navigation bar -->
+<div class="w-full border-b-2 border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-b-2 dark:border-gray-700">
+    <div class="flex flex-col max-w-screen-xl px-4 mx-auto md:justify-between md:flex-row md:px-6 lg:px-8">
+
+        <div class="md:hidden p-4 flex flex-row justify-end">
+            <!-- Hamburger menu button -->
+            <button class="md:hidden rounded-lg text-gray-900 dark:text-white">
+                <svg id="hamburger-icon" fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6 ">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                        clip-rule="evenodd"></path>
+                    <path class="hidden" fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Navigation links -->
+        <nav id="navigation" class="flex-col flex-grow pt-0 pb-3 md:py-3 hidden md:flex md:flex-row">
+            <!-- Generate menu items for each year -->
+            @foreach($editions as $edition)
+            <div class="dropdown-container relative">
+                <div class="toggle-dropdown">
+                    <button
+                        class="dropdown flex flex-row w-full px-4 py-2 mt-2 text-sm font-semibold rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">
+                        <a href="/{{ $edition->year }}/final">{{ $edition->city }} {{ $edition->year }}</a>
+                        <svg fill="currentColor" viewBox="0 0 20 20"
+                            class="dropdown-icon inline md:w-4 md:h-4 w-6 w-6 mt-0 ml-1 transition-transform duration-200 transform md:-mt-1">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
                         </svg>
-                    </span>
-                </button>
+                    </button>
+                </div>
+                <div
+                    class="dropdown-menu-items hidden relative md:absolute w-full md:origin-top-left md:left-1/2 md:transform md:-translate-x-1/2 rounded-md md:w-36">
+                    <div
+                        class="px-4 py-2 md:bg-gray-50 bg-gray-200 rounded-md md:shadow-lg z-10 divide-y divide-gray-200 md:dark:bg-gray-800 dark:bg-gray-700 dark:divide-gray-700">
+                        <a class="block py-2 mt-2 text-sm font-semibold text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
+                            href="/{{ $edition->year }}/final">Finale</a>
+                        <a class="block py-2 mt-2 text-sm font-semibold text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
+                            href="/{{ $edition->year }}/semi-final/1">Halve Finale 1</a>
+                        <a class="block py-2 mt-2 text-sm font-semibold text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
+                            href="/{{ $edition->year }}/semi-final/2">Halve Finale 2</a>
+                    </div>
+                </div>
             </div>
+            @endforeach
 
-            <!-- Navigation links -->
-            <div class="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto"
-                id="navbarSupportedContentY" data-te-collapse-item>
-                <ul class="mx-auto flex flex-col lg:flex-row-reverse bg-gray-50 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700"
-                    data-te-navbar-nav-ref>
-                    <!-- Generate menu items for each year -->
-                    @foreach($editions as $edition)
-                    <li data-te-nav-item-ref>
-                        <div class="relative group dropdown">
-                            <a class="block lg:p-2 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                                href="/{{ $edition->year }}/final" data-te-nav-link-ref data-te-ripple-init
-                                data-te-ripple-color="light">{{
-                                $edition->city }} {{ $edition->year }}</a>
-                            <div class="group-hover:block dropdown-menu absolute w-max hidden">
-                                <ul
-                                    class="top-0 left-0 mt-1 bg-white rounded-md shadow-lg z-10 px-3 py-1 divide-y divide-gray-100 dark:bg-gray-800 dark:divide-gray-700">
-                                    <li
-                                        class="group relative block py-2 text-gray-800 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500">
-                                        <a href="/{{ $edition->year }}/final">Finale</a>
-                                    </li>
-                                    <li
-                                        class="group relative block py-2 text-gray-800 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500">
-                                        <a href="/{{ $edition->year }}/semi-final/1">Halve Finale 1</a>
-                                    </li>
-                                    <li
-                                        class="group relative block py-2 text-gray-800 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500">
-                                        <a href="/{{ $edition->year }}/semi-final/2">Halve Finale 2</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-
-            <div class="mr-4 text-gray-900 dark:text-white">
-                <a href="/logout">Uitloggen</a>
-            </div>
-
-            <!-- Dark/Light mode button -->
-            <div>
+            <div class="md:ml-auto flex flex-col md:flex-row">
+                <!-- Logout button -->
+                <a class="flex flex-row w-full px-4 py-2 mt-2 text-sm font-semibold text-left text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500 md:w-auto md:inline md:mt-0 md:ml-4"
+                    href="/logout">Uitloggen</a>
+                <!-- Dark/Light mode button -->
                 <button id="toggle-mode" type="button"
-                    class="text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                    class="flex text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-sm py-2 px-4 md:px-2 mt-2 md:mt-0">
                     <svg id="toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -75,8 +66,8 @@
                             fill-rule="evenodd" clip-rule="evenodd"></path>
                     </svg>
                 </button>
-
             </div>
-        </div>
-    </nav>
-</header>
+
+        </nav>
+    </div>
+</div>

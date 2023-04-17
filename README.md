@@ -1,4 +1,20 @@
-![GitHub-Mark-Light](https://eurovision.473680590.xyz/storage/app-logo-white.png#gh-dark-mode-only)![GitHub-Mark-Dark](https://eurovision.473680590.xyz/storage/app-logo.png#gh-light-mode-only)
+[![App Logo](https://eurovision.473680590.xyz/storage/app-logo-stroke.png)](https://eurovision.473680590.xyz)
+
+
+
+# Adding/modifying countries,  editions and participants
+
+To add or modify countries, editions, and participants, you can edit their corresponding seeder files located in `/database/seeders`. Once you have made the necessary changes, apply them to the database by running `php artisan db:seed`. 
+
+In the V2 release, an admin panel will be introduced to make data modification more easily accessible.
+
+## Adding a test user
+
+Additional user and score seeders are available if you need to add a test user. To seed a new user, simply run the following commands:
+
+- `php artisan db:seed --class=UserSeeder`
+
+- `php artisan db:seed --class=ScoreSeeder`
 
 
 # Instructions for setting up a new site on a subdomain on the server

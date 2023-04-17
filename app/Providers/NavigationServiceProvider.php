@@ -28,10 +28,7 @@ class NavigationServiceProvider extends ServiceProvider
         // Return nav with editions
         View::composer('layouts.partials.nav', function ($view) {
             $columns = Schema::getColumnListing('editions');
-            $editions = Edition::distinct()->select($columns)->get();
-            // $userId = Auth::id();
-            // $user = User::findOrFail($userId);
-            // $editions = $user->editions();
+            $editions = Edition::distinct()->select($columns)->orderByDesc('year')->get();
             $view->with('editions', $editions);
         });
     }
