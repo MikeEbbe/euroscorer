@@ -88,9 +88,11 @@ function toggleHamburger() {
 /**
  * Hamburger menu functionality
  */
-hamburgerIcon.addEventListener('click', function () {
-    toggleHamburger();
-});
+if (hamburgerIcon) {
+    hamburgerIcon.addEventListener('click', function () {
+        toggleHamburger();
+    });
+}
 
 // Set page to dark/light mode according to the set value
 setMode(setModeValue);
