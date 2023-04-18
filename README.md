@@ -1,4 +1,4 @@
-<p align="center"><a href="https://eurovision.473680590.xyz" target="_blank"><img src="https://eurovision.473680590.xyz/storage/app-logo-stroke.png" width="400" alt="Euroscorer Logo"></a></p>
+<p align="center"><a href="https://eurovision.473680590.xyz" target="_blank"><img src="https://eurovision.473680590.xyz/storage/app-logo-stroke.png" width="400" alt="EuroScorer Logo"></a></p>
 
 
 

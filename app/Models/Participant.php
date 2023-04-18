@@ -16,11 +16,35 @@ class Participant extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'year',
+        'edition_id',
+        'country_id',
         'song',
         'semi_final',
         'is_in_final',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($participant) {
+            // Add a score entry for this participant and add it to all users
+            $users = User::all();
+
+            foreach ($users as $user) {
+                $scoreExists = $participant->scores()
+                    ->where('user_id', $user->id)
+                    ->exists();
+        
+                if (!$scoreExists) {
+                    $score = new Score([
+                        'user_id' => $user->id,
+                    ]);
+                    $participant->scores()->save($score);
+                }
+            }
+        });
+    }
 
     /**
      * Edition relationship

@@ -18,7 +18,7 @@ class Edition extends Model
     protected $fillable = [
         'year',
         'city',
-        'logo',
+        'country_id'
     ];
 
     /**

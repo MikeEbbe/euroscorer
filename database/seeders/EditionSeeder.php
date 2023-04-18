@@ -32,7 +32,7 @@ class EditionSeeder extends Seeder
                 [
                     "year" => 2023,
                     "city" => 'Liverpool',
-                    "country_id" => 39,
+                    "country_id" => 28,
                 ],
             ]
         );
