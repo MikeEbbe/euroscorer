@@ -69,13 +69,15 @@ dropdownContainers.forEach(dropdownContainer => {
         dropdownIcon.classList.toggle('rotate-180');
     });
 
-    dropdownContainer.addEventListener('mouseleave', event => {
-        const target = event.target;
-        if (target !== toggleDropdown && target !== dropdownMenu) {
-            dropdownMenu.classList.add('hidden');
-            dropdownIcon.classList.remove('rotate-180');
-        }
-    });
+    if (window.matchMedia("(min-width: 768px)").matches) {
+        dropdownContainer.addEventListener('mouseleave', event => {
+            const target = event.target;
+            if (target !== toggleDropdown && target !== dropdownMenu) {
+                dropdownMenu.classList.add('hidden');
+                dropdownIcon.classList.remove('rotate-180');
+            }
+        });
+    }
 });
 
 function toggleHamburger() {

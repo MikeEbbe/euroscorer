@@ -4,17 +4,24 @@
 
 # Adding/modifying countries,  editions and participants
 
+
+
 To add or modify countries, editions, and participants, you can edit their corresponding seeder files located in `/database/seeders`. Once you have made the necessary changes, apply them to the database by running `php artisan db:seed`. 
 
 In the V2 release, an admin panel will be introduced to make data modification more easily accessible.
 
+
+
 ## Adding a test user
 
-Additional user and score seeders are available if you need to add a test user. To seed a new user, simply run the following commands:
 
-- `php artisan db:seed --class=UserSeeder`
 
-- `php artisan db:seed --class=ScoreSeeder`
+Additional user and score seeders are available if you need to add a test user. To seed a new user, simply take the following steps:
+
+- Run `php artisan db:seed --class=UserSeeder` to add the test user.
+
+- Run `php artisan db:seed` to update the participants and add a score entry for the test user.
+
 
 
 # Instructions for setting up a new site on a subdomain on the server
@@ -152,3 +159,29 @@ The next step is to create an SSL certificate using certbot. This will secure th
 9. Run `npm install`.
 
 10. Run `npm run build`.
+
+
+
+### Releasing
+
+
+
+To deploy a new release on the production environment, go to the `/var/www/[html directory]/[app name]` directory and run the following commands:
+
+1. `sudo git pull` - this will prompt you for a sudo password and GitHub credentials
+
+2. `composer install`
+
+3. `php artisan migrate`
+
+4. `php artisan db:seed --class=UserSeeder`
+
+5. `php artisan db:seed`
+
+6. `php artisan db:seed --class=ScoreSeeder`
+
+7. `npm install`
+
+8. `npm run build`
+
+In V2 this release strategy will be automated using a continuous delivery pipeline.

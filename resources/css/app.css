@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Invert the color of password reveal in dark mode */
+.dark input[type=password]::-ms-reveal {
+    filter: invert(100%);
+}
