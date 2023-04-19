@@ -53,7 +53,7 @@ dropdownContainers.forEach(dropdownContainer => {
     const dropdownIcon = dropdownContainer.querySelector('.dropdown-icon');
 
     // Add an event listener to the toggleDropdown element
-    if (window.matchMedia("(min-width: 768px)").matches) {
+    if (window.matchMedia("(min-width: 1024px)").matches) {
         toggleDropdown.addEventListener('mouseenter', () => {
             // Show the dropdown menu
             dropdownMenu.classList.remove('hidden');
@@ -61,7 +61,7 @@ dropdownContainers.forEach(dropdownContainer => {
         });
     }
 
-    if (window.matchMedia("(max-width: 768px)").matches) {
+    if (window.matchMedia("(max-width: 1024px)").matches) {
         // Add an event listener to the dropdown element
         dropdown.addEventListener('click', (event) => {
             // Prevent the default behavior of the button
@@ -73,7 +73,7 @@ dropdownContainers.forEach(dropdownContainer => {
         });
     }
 
-    if (window.matchMedia("(min-width: 768px)").matches) {
+    if (window.matchMedia("(min-width: 1024px)").matches) {
         dropdownContainer.addEventListener('mouseleave', event => {
             const target = event.target;
             if (target !== toggleDropdown && target !== dropdownMenu) {
