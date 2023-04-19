@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                 "username" => "Mike",
             ],
             [
-                "password" => bcrypt(env('MAIN_USER_PASSWORD')),
+                "password" => bcrypt(env('MAIN_USER_PASSWORD', 'password')),
                 "is_admin" => true
             ]
         );
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                 "username" => "Test",
             ],
             [
-                "password" => bcrypt(env('TEST_USER_PASSWORD')),
+                "password" => bcrypt(env('TEST_USER_PASSWORD', 'password')),
                 "is_admin" => false
             ]
         );

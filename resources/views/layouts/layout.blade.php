@@ -19,9 +19,10 @@
     @auth
     @include('layouts.partials.nav')
     @endauth
+    
     @yield('content')
-</body>
 
-@vite('resources/js/app.js')
+    @vite('resources/js/app.js')
+</body>
 
 </html>
