@@ -53,21 +53,25 @@ dropdownContainers.forEach(dropdownContainer => {
     const dropdownIcon = dropdownContainer.querySelector('.dropdown-icon');
 
     // Add an event listener to the toggleDropdown element
-    toggleDropdown.addEventListener('mouseenter', () => {
-        // Show the dropdown menu
-        dropdownMenu.classList.remove('hidden');
-        dropdownIcon.classList.add('rotate-180');
-    });
+    if (window.matchMedia("(min-width: 768px)").matches) {
+        toggleDropdown.addEventListener('mouseenter', () => {
+            // Show the dropdown menu
+            dropdownMenu.classList.remove('hidden');
+            dropdownIcon.classList.add('rotate-180');
+        });
+    }
 
-    // Add an event listener to the dropdown element
-    dropdown.addEventListener('click', (event) => {
-        // Prevent the default behavior of the button
-        event.preventDefault();
+    if (window.matchMedia("(max-width: 768px)").matches) {
+        // Add an event listener to the dropdown element
+        dropdown.addEventListener('click', (event) => {
+            // Prevent the default behavior of the button
+            event.preventDefault();
 
-        // Toggle the visibility of the dropdown menu
-        dropdownMenu.classList.toggle('hidden');
-        dropdownIcon.classList.toggle('rotate-180');
-    });
+            // Toggle the visibility of the dropdown menu
+            dropdownMenu.classList.toggle('hidden');
+            dropdownIcon.classList.toggle('rotate-180');
+        });
+    }
 
     if (window.matchMedia("(min-width: 768px)").matches) {
         dropdownContainer.addEventListener('mouseleave', event => {
