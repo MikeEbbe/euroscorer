@@ -13,7 +13,6 @@
 
     <!-- Core CSS + Tailwind -->
     @vite('resources/css/app.css')
-
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">

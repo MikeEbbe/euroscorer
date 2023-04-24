@@ -1,4 +1,8 @@
 {
+    "name": "euroscorer",
+    "version": "0.9",
+    "description": "App to grade Eurovision Song Contest songs",
+    "author": "Mike Ebbe",
     "private": true,
     "scripts": {
         "dev": "vite",

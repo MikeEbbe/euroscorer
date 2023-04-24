@@ -1,5 +1,5 @@
 <!-- Navigation bar -->
-<div class="w-full border-b-2 border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-b-2 dark:border-gray-700">
+<div class="lg:pl-[calc(100vw-100%)] w-full border-b-2 border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-b-2 dark:border-gray-700">
     <div class="flex flex-col max-w-screen-xl px-4 mx-auto lg:justify-between lg:flex-row lg:px-6 lg:px-8">
 
         <div class="lg:hidden p-4 flex flex-row justify-end">
