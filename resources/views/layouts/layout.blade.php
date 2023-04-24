@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
     <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/favicon-180x180.png">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
     <!-- Core CSS + Tailwind -->
     @vite('resources/css/app.css')

@@ -23,7 +23,7 @@
             <div class="dropdown-container relative">
                 <div class="toggle-dropdown">
                     <button
-                        class="dropdown flex flex-row w-full px-4 py-2 mt-2 text-sm font-semibold rounded-lg lg:w-auto lg:inline lg:mt-0 lg:ml-4 text-gray-900 lg:hover:text-blue-700 dark:text-white lg:dark:hover:text-blue-500">
+                        class="dropdown flex flex-row w-full px-4 py-2 mt-2 text-sm font-medium rounded-lg lg:w-auto lg:inline lg:mt-0 lg:ml-4 text-gray-900 lg:hover:text-blue-700 dark:text-white lg:dark:hover:text-blue-500">
                         <a href="/{{ $edition->year }}/final">{{ $edition->city }} {{ $edition->year }}</a>
                         <svg fill="currentColor" viewBox="0 0 20 20"
                             class="dropdown-icon inline lg:w-4 lg:h-4 w-6 w-6 mt-0 ml-1 transition-transform duration-200 transform lg:-mt-1">
@@ -37,11 +37,11 @@
                     class="dropdown-menu-items hidden relative lg:absolute w-full lg:origin-top-left lg:left-1/2 lg:transform lg:-translate-x-1/2 rounded-md lg:w-36">
                     <div
                         class="px-4 py-2 lg:bg-gray-50 bg-gray-200 rounded-md lg:shadow-lg z-10 divide-y divide-gray-200 lg:dark:bg-gray-800 dark:bg-gray-700 dark:divide-gray-700">
-                        <a class="block py-2 mt-2 text-sm font-semibold text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
+                        <a class="block py-3 lg:mt-0 text-sm font-medium text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
                             href="/{{ $edition->year }}/final">Finale</a>
-                        <a class="block py-2 mt-2 text-sm font-semibold text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
+                        <a class="block py-3 lg:mt-0 text-sm font-medium text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
                             href="/{{ $edition->year }}/semi-final/1">Halve Finale 1</a>
-                        <a class="block py-2 mt-2 text-sm font-semibold text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
+                        <a class="block py-3 lg:mt-0 text-sm font-medium text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
                             href="/{{ $edition->year }}/semi-final/2">Halve Finale 2</a>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
 
             <div class="lg:ml-auto flex flex-col lg:flex-row">
                 <!-- Logout button -->
-                <a class="flex flex-row w-full px-4 py-2 mt-2 text-sm font-semibold text-left text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500 lg:w-auto lg:inline lg:mt-0 lg:ml-4"
+                <a class="flex flex-row w-full px-4 py-2 mt-2 text-sm font-medium text-left text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500 lg:w-auto lg:inline lg:mt-0 lg:ml-4"
                     href="/logout">Uitloggen</a>
                 <!-- Dark/Light mode button -->
                 <button id="toggle-mode" type="button"
