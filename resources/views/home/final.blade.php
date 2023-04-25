@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
+<!-- Edition info -->
 <div class="my-6 md:my-12 flex justify-center items-center text-center">
     <img src="{{ $edition->country->flag }}" alt="{{ $edition->country->name }}.png"
         class="h-8 md:h-10 w-auto flex-shrink-0 mr-2 md:mr-4" />
@@ -10,6 +11,7 @@
 <h1 class="text-center my-6 md:my-12 text-xl font-bold text-gray-900 dark:text-white">
     Finale
 </h1>
+<!-- Participants -->
 <div class="relative overflow-x-auto shadow-md rounded-t-lg md:rounded-t-xl">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">

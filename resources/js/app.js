@@ -74,9 +74,11 @@ dropdownContainers.forEach(dropdownContainer => {
     }
 
     if (window.matchMedia("(min-width: 1024px)").matches) {
+        // Add an event listener to the mouse leaving the dropdown container
         dropdownContainer.addEventListener('mouseleave', event => {
             const target = event.target;
             if (target !== toggleDropdown && target !== dropdownMenu) {
+                // Hide the dropdown menu and inverse the dropdown arrow icon
                 dropdownMenu.classList.add('hidden');
                 dropdownIcon.classList.remove('rotate-180');
             }
@@ -84,6 +86,9 @@ dropdownContainers.forEach(dropdownContainer => {
     }
 });
 
+/**
+ * Toggle the hamburger menu
+ */
 function toggleHamburger() {
     navigation.classList.toggle('hidden');
     navigation.classList.toggle('flex');
