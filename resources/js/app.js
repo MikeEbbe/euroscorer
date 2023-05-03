@@ -134,6 +134,9 @@ if (typeof stats !== 'undefined') {
         const lightBarColor = '#BFDBFE';
         const darkBarColor = '#3B82F6';
 
+        /**
+         * Song/act disparity chart
+         */
         new Chart(
             document.getElementById('song-act-disparity-chart'),
             {
@@ -178,6 +181,9 @@ if (typeof stats !== 'undefined') {
             }
         );
 
+        /**
+         * Act/song disparity chart
+         */
         new Chart(
             document.getElementById('act-song-disparity-chart'),
             {
