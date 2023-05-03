@@ -20,7 +20,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Handle account login request
+     * Handle account login request.
      * 
      * @param LoginRequest $request
      * 
@@ -43,7 +43,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Handle response after user authenticated
+     * Handle response after user authenticated.
      * 
      * @param Request $request
      * @param Auth $user

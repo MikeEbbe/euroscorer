@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     /**
      * This method redirects the user to the most recent edition
-     * of the Eurovision Song Contest
+     * of the Eurovision Song Contest.
      */
     public function index()
     {

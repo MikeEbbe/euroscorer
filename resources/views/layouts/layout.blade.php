@@ -22,6 +22,8 @@
     
     @yield('content')
 
+    @include('layouts.partials.footer')
+
     @vite('resources/js/app.js')
 </body>
 

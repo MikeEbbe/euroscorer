@@ -1,5 +1,6 @@
 <!-- Navigation bar -->
-<div class="lg:pl-[calc(100vw-100%)] w-full border-b-2 border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-b-2 dark:border-gray-700">
+<div
+    class="lg:pl-[calc(100vw-100%)] w-full border-b-2 border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-b-2 dark:border-gray-700">
     <div class="flex flex-col max-w-screen-xl px-4 mx-auto lg:justify-between lg:flex-row lg:px-6 lg:px-8">
 
         <div class="lg:hidden p-4 flex flex-row justify-end">
@@ -43,6 +44,8 @@
                             href="/{{ $edition->year }}/semi-final/1">Halve Finale 1</a>
                         <a class="block py-3 lg:mt-0 text-sm font-medium text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
                             href="/{{ $edition->year }}/semi-final/2">Halve Finale 2</a>
+                        <a class="block py-3 lg:mt-0 text-sm font-medium text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
+                            href="/{{ $edition->year }}/stats">Statistieken</a>
                     </div>
                 </div>
             </div>

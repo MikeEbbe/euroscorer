@@ -48,5 +48,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          */
         Route::get('{year}/score/{id}', 'ScoreController@index')->name('score.index');
         Route::put('{year}/score/{id}', 'ScoreController@update')->name('score.update');
+
+        /**
+         * Stats routes
+         */
+        Route::get('{year}/stats', 'StatsController@index')->name('stats.index');
     });
 });

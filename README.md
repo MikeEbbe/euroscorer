@@ -185,3 +185,92 @@ To deploy a new release on the production environment, go to the `/var/www/[html
 8. `npm run build`
 
 In V2 this release strategy will be automated using a continuous delivery pipeline.
+
+
+
+## Database
+
+
+
+```mermaid
+erDiagram
+    USER ||--|{ SCORE : modifies
+    USER {
+        integer id PK
+        string username
+        string password
+        string remember_token
+        boolean is_admin
+    }
+    SCORE o{--|| PARTICIPANT : "assigned to"
+    SCORE {
+        integer id PK
+        integer user_id FK
+        integer participant_id FK
+        float performance
+        float song
+        float total
+    }
+    PARTICIPANT |{--|| EDITION : "competes in"
+    PARTICIPANT |{--|| COUNTRY : from
+    PARTICIPANT {
+        integer id PK
+        integer edition_id FK
+        integer country_id FK
+        string song
+        integer semi_final
+        boolean is_in_final
+        integer semi_final_order
+        integer final_order
+    }
+    EDITION |{--|| COUNTRY : "takes place in"
+    EDITION {
+        integer id PK
+        string country_id FK
+        integer year
+        string city
+    }
+    COUNTRY {
+        integer id PK
+        string name
+        string flag
+    }
+```
+
+
+
+## App flow
+
+
+
+```mermaid
+---
+title: Authentication
+---
+flowchart LR
+    A((Start))-->B(Load app)
+    B-->C{Authenticated?}
+    C-->|Yes|D(Home screen)
+    C-->|No|E(Login screen)
+    E-->F(Login)-->D
+    E-->G(Register screen)
+    G-->H(Register)-->D
+    D-->I((End))
+    style I stroke-width:4px;
+```
+
+```mermaid
+---
+title: Scoring
+---
+flowchart LR
+    A((Start))-->B(Home screen)
+    B-->C(Select edition)
+    C-->D(Edit score <br/> for participant)
+    D-->E(Grade song)
+    D-->F(Grade act)
+    E-->G(Save score)
+    F-->G
+    G-->H((End))
+    style H stroke-width:4px;
+```

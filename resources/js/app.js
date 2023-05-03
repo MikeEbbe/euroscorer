@@ -1,3 +1,5 @@
+import Chart from 'chart.js/auto'
+
 // Dark mode
 const html = document.documentElement;
 const logo = document.getElementById('app-logo');
@@ -36,6 +38,13 @@ function setMode(mode) {
     // Toggle the icon
     darkIcon && darkIcon.classList.toggle('hidden', mode === 'dark');
     lightIcon && lightIcon.classList.toggle('hidden', mode !== 'dark');
+
+    if (typeof stats !== 'undefined') {
+        var instances = Object.values(Chart.instances);
+        instances.forEach((instance) => {
+            instance.update();
+        });
+    }
 
     // Store the set mode in user's local storage
     localStorage.setItem('mode', mode);
@@ -103,6 +112,116 @@ if (hamburgerIcon) {
     hamburgerIcon.addEventListener('click', function () {
         toggleHamburger();
     });
+}
+
+/**
+ * Stats
+ */
+if (typeof stats !== 'undefined') {
+    (async function () {
+        /**
+         * Map data
+         */
+        const songActDisparityData = stats.highestSongActDisparity.map((item) => ({
+            countryName: item.country.name,
+            disparity: item.avg_song_disparity,
+        }));
+        const actSongDisparityData = stats.highestActSongDisparity.map((item) => ({
+            countryName: item.country.name,
+            disparity: item.avg_performance_disparity,
+        }));
+        const darkTextColor = '#6B7280';
+        const lightBarColor = '#BFDBFE';
+        const darkBarColor = '#3B82F6';
+
+        new Chart(
+            document.getElementById('song-act-disparity-chart'),
+            {
+                type: 'bar',
+                data: {
+                    labels: songActDisparityData.map((item) => item.countryName),
+                    datasets: [{
+                        label: "Verschil",
+                        data: songActDisparityData.map((item) => item.disparity),
+                        backgroundColor: () => {
+                            return setModeValue === 'dark' ? darkBarColor : lightBarColor;
+                        }
+                    }],
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: () => {
+                                    return setModeValue === 'dark' ? 'white' : darkTextColor;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: () => {
+                                    return setModeValue === 'dark' ? 'white' : darkTextColor;
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: () => {
+                                    return setModeValue === 'dark' ? 'white' : darkTextColor;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        );
+
+        new Chart(
+            document.getElementById('act-song-disparity-chart'),
+            {
+                type: 'bar',
+                data: {
+                    labels: actSongDisparityData.map((item) => item.countryName),
+                    datasets: [{
+                        label: "Verschil",
+                        data: actSongDisparityData.map((item) => item.disparity),
+                        backgroundColor: () => {
+                            return setModeValue === 'dark' ? darkBarColor : lightBarColor;
+                        }
+                    }],
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: () => {
+                                    return setModeValue === 'dark' ? 'white' : darkTextColor;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: () => {
+                                    return setModeValue === 'dark' ? 'white' : darkTextColor;
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: () => {
+                                    return setModeValue === 'dark' ? 'white' : darkTextColor;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        );
+    })();
 }
 
 // Set page to dark/light mode according to the set value

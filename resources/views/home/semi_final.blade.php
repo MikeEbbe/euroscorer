@@ -2,15 +2,17 @@
 
 @section('content')
 <!-- Edition info -->
-<div class="my-6 md:my-12 flex justify-center items-center text-center">
-    <img src="{{ $edition->country->flag }}" alt="{{ $edition->country->name }}.png"
-        class="h-8 md:h-10 w-auto flex-shrink-0 mr-2 md:mr-4" />
-    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-        {{ $edition->city }} {{ $edition->year }}</h1>
+<div class="lg:pl-[calc(100vw-100%)]">
+    <div class="my-6 md:my-12 flex justify-center items-center text-center">
+        <img src="{{ $edition->country->flag }}" alt="{{ $edition->country->name }}.png"
+            class="h-8 md:h-10 w-auto flex-shrink-0 mr-2 md:mr-4" />
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+            {{ $edition->city }} {{ $edition->year }}</h1>
+    </div>
+    <h1 class="text-center my-6 md:my-12 text-xl font-bold text-gray-900 dark:text-white">
+        Halve Finale {{ $stage }}
+    </h1>
 </div>
-<h1 class="text-center my-6 md:my-12 text-xl font-bold text-gray-900 dark:text-white">
-    Halve Finale {{ $stage }}
-</h1>
 <!-- Participants -->
 <div class="relative overflow-x-auto shadow-md rounded-t-lg md:rounded-t-xl">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

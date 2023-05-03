@@ -12,3 +12,9 @@ input[type=password] {
 .dark input[type=password]::-ms-reveal {
     filter: invert(100%);
 }
+
+/* Set graph canvas to full width */
+.grid > div > canvas {
+    width: 100% !important;
+    height: auto !important;
+}
