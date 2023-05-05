@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Edition info -->
-<div class="lg:pl-[calc(100vw-100%)]">
+<div class="xl:pl-[calc(100vw-100%)]">
     <div class="my-6 md:my-12 flex justify-center items-center text-center">
         <img src="{{ $edition->country->flag }}" alt="{{ $edition->country->name }}.png"
             class="h-8 md:h-10 w-auto flex-shrink-0 mr-2 md:mr-4" />
