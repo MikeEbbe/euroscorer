@@ -8,7 +8,7 @@ With its modern interface, EuroScorer makes assigning scores to Eurovision acts 
 
 EuroScorer has a sleek dark mode option, allowing you to enjoy optimal viewing conditions according to your preference!
 
-Access EuroScorer from any device, and enjoy the perfect companion while watching Eurovision. But that's not all - EuroScorer also provides detailed statistics, such as the average highest and lowest rated songs across the user base. These insights can help users gain a deeper understanding of what other Eurovision users think of the entries. Join the EuroScorer community today and experience Eurovision grading like never before!
+Access EuroScorer from any device, and enjoy the perfect companion while watching Eurovision. But that's not all - EuroScorer also provides detailed statistics, such as the average highest and lowest rated songs across the user base. These insights can help users gain a deeper understanding of what other Eurovision fans think of the entries. Join the EuroScorer community today and experience Eurovision grading like never before!
 
 
 
