@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Validator;
 class SemiFinalController extends Controller
 {
     /**
-     * Returns a semi final view by its year and stage
+     * Returns a semi final view by its year and stage.
+     * @param Int $year - Year of the edition
+     * @param Int $stage - Stage of the semi final
      */
     public function index($year, $stage)
     {
@@ -39,15 +41,33 @@ class SemiFinalController extends Controller
     /**
      * Loads all scores for a user by their given year and stage,
      * sorted by the assigned user score.
+     * @param Authenticatable $user - Logged in user
+     * @param Int $year - Year of the edition
+     * @param Int $stage - Stage of the semi final
      */
     public function scoresByUserYearAndStage($user, $year, $stage)
     {
-        $scores = $user->scores()->with('participant')->whereHas('participant', function ($query) use ($year, $stage) {
-            $query->where('semi_final', $stage)->whereHas('edition', function ($query) use ($year) {
-                $query->where('year', $year);
-            });
-        })->orderByDesc('total')->get();
+        $scores = $user->scores()
+            ->with('participant')
+            ->whereHas('participant', function ($query) use ($year, $stage) {
+                $query->where('semi_final', $stage)->whereHas('edition', function ($query) use ($year) {
+                    $query->where('year', $year);
+                });
+            })
+            ->get();
+
+        $scores = $this->orderScores($scores);
 
         return $scores;
+    }
+
+    public function orderScores($scores)
+    {
+        $sorted = $scores->sortBy([
+            ['total', 'desc'],
+            ['participant.semi_final_order', 'asc'],
+        ]);
+
+        return $sorted;
     }
 }

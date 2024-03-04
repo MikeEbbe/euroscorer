@@ -37,14 +37,18 @@ class ScoreController extends Controller
         }
 
         if (url()->previous() != session('original_url')) {
-            session(['original_url' => url()->previous()]); // Set the original URL
+            // Set the original URL
+            session(['original_url' => url()->previous()]);
         }
+        // Get the stored url from session
         $redirect_url = session('original_url');
         if (strpos($redirect_url, '/semi-final') === false && strpos($redirect_url, '/final') === false) {
+            // Set the redirect url to a new URL that redirects to the final page for a specific year
             $redirect_url = '/' . $year . '/final';
         }
 
-        $scores = Auth::user()->scores; // Scores of authenticated user
+        // Scores of authenticated user
+        $scores = Auth::user()->scores;
         $score = $scores->firstWhere('id', $id);
 
         // Return the score view with the score

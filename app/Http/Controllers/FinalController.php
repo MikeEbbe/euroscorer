@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Validator;
 class FinalController extends Controller
 {
     /**
-     * Returns a final view by its year
+     * Returns a final view by its year.
+     * @param Int $year - Year of the edition
      */
     public function index($year)
     {
@@ -38,15 +39,32 @@ class FinalController extends Controller
     /**
      * Loads all scores in the final for a user by their given year,
      * sorted by the assigned user score.
+     * @param Authenticatable $user - Logged in user
+     * @param Int $year - Year of the edition
      */
     public function finalScoresByUserAndYear($user, $year)
     {
-        $scores = $user->scores()->with('participant')->whereHas('participant', function ($query) use ($year) {
-            $query->where('is_in_final', true)->whereHas('edition', function ($query) use ($year) {
-                $query->where('year', $year);
-            });
-        })->orderByDesc('total')->get();
+        $scores = $user->scores()
+            ->with('participant')
+            ->whereHas('participant', function ($query) use ($year) {
+                $query->where('is_in_final', true)->whereHas('edition', function ($query) use ($year) {
+                    $query->where('year', $year);
+                });
+            })
+            ->get();
+
+        $scores = $this->orderScores($scores);
 
         return $scores;
+    }
+
+    public function orderScores($scores)
+    {
+        $sorted = $scores->sortBy([
+            ['total', 'desc'],
+            ['participant.final_order', 'asc'],
+        ]);
+
+        return $sorted;
     }
 }

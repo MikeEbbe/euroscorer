@@ -2,7 +2,106 @@
 
 
 
-# Adding/modifying countries,  editions and participants
+Introducing EuroScorer - a web app made for Eurovision fans that simplifies the grading process of Eurovision songs! Designed with the user in mind, EuroScorer allows you to assign scores to Eurovision entries and automatically organizes them.
+
+With its modern interface, EuroScorer makes assigning scores to Eurovision acts an effortless task. Simply register on the app, select the participant you want to grade, and give a score for the song and the performance. The app instantly updates your scores, and shows your top 10 semi-finalists or your top 5 finalists.
+
+EuroScorer has a sleek dark mode option, allowing you to enjoy optimal viewing conditions according to your preference!
+
+Access EuroScorer from any device, and enjoy the perfect companion while watching Eurovision. But that's not all - EuroScorer also provides detailed statistics, such as the average highest and lowest rated songs across the user base. These insights can help users gain a deeper understanding of what other Eurovision fans think of the entries. Join the EuroScorer community today and experience Eurovision grading like never before!
+
+
+
+# App flow
+
+
+
+```mermaid
+---
+title: Authentication
+---
+flowchart LR
+    A((Start))-->B(Load app)
+    B-->C{Authenticated?}
+    C-->|Yes|D(Home screen)
+    C-->|No|E(Login screen)
+    E-->F(Login)-->D
+    E-->G(Register screen)
+    G-->H(Register)-->D
+    D-->I((End))
+    style I stroke-width:4px;
+```
+
+```mermaid
+---
+title: Scoring
+---
+flowchart LR
+    A((Start))-->B(Home screen)
+    B-->C(Select edition)
+    C-->D(Edit score <br/> for participant)
+    D-->E(Grade song)
+    D-->F(Grade act)
+    E-->G(Save score)
+    F-->G
+    G-->H((End))
+    style H stroke-width:4px;
+```
+
+
+
+# Database
+
+
+
+```mermaid
+erDiagram
+    USER ||--|{ SCORE : modifies
+    USER {
+        integer id PK
+        string username
+        string password
+        string remember_token
+        boolean is_admin
+    }
+    SCORE o{--|| PARTICIPANT : "assigned to"
+    SCORE {
+        integer id PK
+        integer user_id FK
+        integer participant_id FK
+        float performance
+        float song
+        float total
+    }
+    PARTICIPANT |{--|| EDITION : "competes in"
+    PARTICIPANT |{--|| COUNTRY : from
+    PARTICIPANT {
+        integer id PK
+        integer edition_id FK
+        integer country_id FK
+        string song
+        integer semi_final
+        boolean is_in_final
+        integer semi_final_order
+        integer final_order
+    }
+    EDITION |{--|| COUNTRY : "takes place in"
+    EDITION {
+        integer id PK
+        string country_id FK
+        integer year
+        string city
+    }
+    COUNTRY {
+        integer id PK
+        string name
+        string flag
+    }
+```
+
+
+
+# Maintaining the app
 
 
 
@@ -24,7 +123,7 @@ Additional user and score seeders are available if you need to add a test user. 
 
 
 
-# Instructions for setting up a new site on a subdomain on the server
+## Instructions for setting up a new site on a subdomain on the server
 
   
 
@@ -32,13 +131,11 @@ These instructions assume that you are using a Hetzner Ubuntu server and have al
 
   
 
-## Logging in to the Hetzner Ubuntu server
+### Logging in to the Hetzner Ubuntu server
 
   
 
 Refer to the "Image editor" document for the login credentials to the Hetzner Ubuntu server.
-
-  
 
 1. Open a command prompt interface
 
@@ -46,7 +143,7 @@ Refer to the "Image editor" document for the login credentials to the Hetzner Ub
 
   
 
-## Cloning the repository
+### Cloning the repository
 
   
 
@@ -62,7 +159,7 @@ Refer to the "Image editor" document for the login credentials to the Hetzner Ub
 
   
 
-## Hosting
+### Hosting
 
   
 
@@ -82,7 +179,7 @@ Refer to the "Image editor" document for the login credentials to the Hetzner Ub
 
   
 
-## DNS
+### DNS
 
   
 
@@ -102,7 +199,7 @@ Refer to the "Image editor" document for the login credentials to the Hetzner Ub
 
   
 
-## SSL
+### SSL
 
   
 
@@ -120,7 +217,7 @@ The next step is to create an SSL certificate using certbot. This will secure th
 
   
 
-## MySQL
+### MySQL
 
   
 
@@ -136,7 +233,7 @@ The next step is to create an SSL certificate using certbot. This will secure th
 
   
 
-## Building
+### Building
 
 
 ### Local
@@ -176,7 +273,7 @@ The next step is to create an SSL certificate using certbot. This will secure th
 
 
 
-### Releasing
+#### Releasing
 
 
 

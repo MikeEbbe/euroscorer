@@ -2,7 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Set password font to Segoe, since the 
+default Inter font is too large on FireFox */
+input[type=password] {
+    font-family: 'Segoe UI';
+}
+
 /* Invert the color of password reveal in dark mode */
 .dark input[type=password]::-ms-reveal {
     filter: invert(100%);
+}
+
+/* Set graph canvas to full width */
+.grid > div > canvas {
+    width: 100% !important;
+    height: auto !important;
 }

@@ -20,7 +20,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Handle account registration request
+     * Handle account registration request.
      * 
      * @param RegisterRequest $request
      * 
