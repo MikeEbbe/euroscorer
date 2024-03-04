@@ -1,4 +1,4 @@
-<p align="center"><a href="https://eurovision.473680590.xyz" target="_blank"><img src="https://eurovision.473680590.xyz/storage/app-logo-stroke.png" width="400" alt="EuroScorer Logo"></a></p>
+<p align="center"><a href="https://eurovision.584791601.xyz" target="_blank"><img src="https://eurovision.584791601.xyz/storage/app-logo-stroke.png" width="400" alt="EuroScorer Logo"></a></p>
 
 
 
@@ -28,7 +28,7 @@ Additional user and score seeders are available if you need to add a test user. 
 
   
 
-These instructions assume that you are using a Hetzner Ubuntu server and have already registered the domain name `473680590.xyz` with Namecheap. They also assume that you are using the Laravel Framework for your application.
+These instructions assume that you are using a Hetzner Ubuntu server and have already registered the domain name `584791601.xyz` with Namecheap. They also assume that you are using the Laravel Framework for your application.
 
   
 
@@ -76,7 +76,7 @@ Refer to the "Image editor" document for the login credentials to the Hetzner Ub
 
 - Remove all rewrites (`RewriteEngine` through `RewriteRule`). These will be generated later by certbot when creating an SSL certificate.
 
-4. Save the file with the name `[app name].473680590.xyz.conf`.
+4. Save the file with the name `[app name].584791601.xyz.conf`.
 
 5. Restart the server using `sudo systemctl reload apache2`.
 
@@ -88,7 +88,7 @@ Refer to the "Image editor" document for the login credentials to the Hetzner Ub
 
 1. Open the [Hetzner DNS Console](https://dns.hetzner.com/).
 
-2. Click on the zone for the `473680590.xyz` domain name.
+2. Click on the zone for the `584791601.xyz` domain name.
 
 3. Add a new record with the following values:
 
@@ -138,6 +138,20 @@ The next step is to create an SSL certificate using certbot. This will secure th
 
 ## Building
 
+
+### Local
+
+
+1. Open Docker Desktop
+
+2. In a terminal run `wsl` to open WSL 2.
+
+3. In WSL 2, go to the project directory and run `.vendor/bin/sail up` to start the Docker container.
+
+4. Open a new terminal, go to the project directory and run `npm run dev` to build the project.
+
+
+### Production
   
 
 1. Open the app directory at `/var/www/[html directory]/[app name]`.
