@@ -233,7 +233,7 @@ The next step is to create an SSL certificate using certbot. This will secure th
 
   
 
-### Building
+## Building
 
 
 ### Local
@@ -243,7 +243,7 @@ The next step is to create an SSL certificate using certbot. This will secure th
 
 2. In a terminal run `wsl` to open WSL 2.
 
-3. In WSL 2, go to the project directory and run `.vendor/bin/sail up` to start the Docker container.
+3. In WSL 2, go to the project directory and run `./vendor/bin/sail up` to start the Docker container.
 
 4. Open a new terminal, go to the project directory and run `npm run dev` to build the project.
 
@@ -273,7 +273,7 @@ The next step is to create an SSL certificate using certbot. This will secure th
 
 
 
-#### Releasing
+## Releasing
 
 
 
