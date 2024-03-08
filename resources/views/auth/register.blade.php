@@ -5,7 +5,7 @@
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen xl:py-0">
         <!-- Logo -->
         <a href="#" class="flex items-center mb-6">
-            <img id="app-logo" class="h-40" src="{{ asset('storage/app-logo-white.png') }}" alt="logo">
+            <img id="app-logo" class="h-40" src="{{ asset('app-logo-white.png') }}" alt="logo">
         </a>
         <div
             class="w-full bg-white rounded-lg shadow dark:border md:mt-0 max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

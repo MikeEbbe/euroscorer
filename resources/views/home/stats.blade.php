@@ -119,6 +119,7 @@
         <div class="grid grid-cols-10 px-4 xl:px-0">
             <div
                 class="p-4 col-span-10 xl:col-start-4 xl:col-span-4 flex justify-center mx-auto w-full bg-gray-200 rounded-3xl dark:bg-gray-700">
+                @if ($lowestSong)
                 <div class="flex items-center space-x-4 text-center pointer-events-none select-none">
                     <img class="w-16 h-16 rounded-full border-2 border-gray-300 object-cover"
                         src="{{ $lowestSong->country->flag }}" alt="{{ $lowestSong->country->name }}.png" />
@@ -127,6 +128,9 @@
                         <p class="text-base text-gray-500 dark:text-gray-400">{{ $lowestSong->song }}</p>
                     </div>
                 </div>
+                @else
+                <p class="block text-gray-900 font-medium dark:text-white">Nog geen data beschikbaar.</p>
+                @endif
             </div>
         </div>
     </div>
@@ -136,6 +140,7 @@
         <div class="grid grid-cols-10 px-4 xl:px-0">
             <div
                 class="p-4 col-span-10 xl:col-start-4 xl:col-span-4 flex justify-center mx-auto w-full xl:w-full bg-gray-200 rounded-3xl dark:bg-gray-700">
+                @if ($lowestSong)
                 <div class="flex items-center space-x-4 text-center pointer-events-none select-none">
                     <img class="w-16 h-16 rounded-full border-2 border-gray-300 object-cover"
                         src="{{ $lowestAct->country->flag }}" alt="{{ $lowestAct->country->name }}.png" />
@@ -144,21 +149,24 @@
                         <p class="text-base text-gray-500 dark:text-gray-400">{{ $lowestAct->song }}</p>
                     </div>
                 </div>
+                @else
+                <p class="block text-gray-900 font-medium dark:text-white">Nog geen data beschikbaar.</p>
+                @endif
             </div>
         </div>
     </div>
     <!-- Song/act disparity -->
     <div class="w-full col-span-1 xl:col-span-3 text-center px-2 xl:px-0">
         <span class="block text-gray-900 font-medium dark:text-white">Hoe liedjes zich verhouden tot acts</span>
-        <span class="block text-gray-500 dark:text-gray-400 mb-2">Een hoger verschil wijst op een grotere afwijking van
-            de acts.</span>
+        <span class="block text-gray-500 dark:text-gray-400 mb-2">Gemiddeld genomen hebben deze landen een beter liedje
+            dan act.</span>
         <canvas class="w-full" id="song-act-disparity-chart"></canvas>
     </div>
     <!-- Act/song disparity -->
     <div class="w-full col-span-1 xl:col-span-3 text-center px-2 xl:px-0">
         <span class="block text-gray-900 font-medium dark:text-white">Hoe acts zich verhouden tot liedjes</span>
-        <span class="block text-gray-500 dark:text-gray-400 mb-2">Een hoger verschil wijst op een grotere afwijking van
-            de liedjes.</span>
+        <span class="block text-gray-500 dark:text-gray-400 mb-2">Gemiddeld genomen hebben deze landen een betere act
+            dan liedje.</span>
         <canvas class="w-full" id="act-song-disparity-chart"></canvas>
     </div>
 </div>

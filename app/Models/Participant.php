@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
 class Participant extends Model
 {
+    use CrudTrait;
     use HasApiTokens, HasFactory;
 
     /**
@@ -21,6 +23,8 @@ class Participant extends Model
         'song',
         'semi_final',
         'is_in_final',
+        'semi_final_order',
+        'final_order',
     ];
 
     protected static function boot()
