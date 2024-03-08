@@ -33,7 +33,7 @@ function setMode(mode) {
     // Add or remove the dark class from the html element
     html.classList.toggle('dark', mode === 'dark');
     // Change the logo image based on the mode value (if the logo element exists)
-    logo && (logo.src = mode === 'dark' ? 'storage/app-logo-white.png' : 'storage/app-logo.png');
+    logo && (logo.src = mode === 'dark' ? 'app-logo-white.png' : 'app-logo.png');
 
     // Toggle the icon
     darkIcon && darkIcon.classList.toggle('hidden', mode === 'dark');
