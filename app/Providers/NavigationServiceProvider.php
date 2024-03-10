@@ -29,7 +29,14 @@ class NavigationServiceProvider extends ServiceProvider
         View::composer('layouts.partials.nav', function ($view) {
             $columns = Schema::getColumnListing('editions');
             $editions = Edition::distinct()->select($columns)->orderByDesc('year')->get();
-            $view->with('editions', $editions);
+
+            // Also include username
+            $username = Auth::user()->username;
+
+            $view->with([
+                'editions' => $editions,
+                'username' => $username,
+            ]);
         });
     }
 }

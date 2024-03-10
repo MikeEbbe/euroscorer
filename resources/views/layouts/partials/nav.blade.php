@@ -53,7 +53,8 @@
 
             <div class="xl:ml-auto flex flex-col xl:flex-row">
                 <!-- Logout button -->
-                <a class="flex flex-row w-full px-4 py-2 mt-2 text-sm font-medium text-left text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500 xl:w-auto xl:inline xl:mt-0 xl:ml-4"
+                <span class="flex flex-row w-full px-4 py-2 mt-2 text-sm font-medium text-left text-gray-900 dark:text-white xl:w-auto xl:inline xl:mt-0">Ingelogd als {{ $username }}</span>
+                <a class="flex flex-row w-full px-4 py-2 mt-2 text-sm font-medium text-left text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500 xl:w-auto xl:inline xl:mt-0"
                     href="/logout">Uitloggen</a>
                 <!-- Dark/Light mode button -->
                 <button id="toggle-mode" type="button"
