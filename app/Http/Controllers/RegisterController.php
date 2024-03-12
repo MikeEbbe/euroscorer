@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
 use App\Models\Participant;
+use App\Models\Edition;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class RegisterController extends Controller
         $user = User::create($request->validated());
 
         $participants = Participant::whereHas('edition', function ($query) {
-            $query->where('year', 2023);
+            $query->where('year', Edition::max('year'));
         })
         ->get();
 
