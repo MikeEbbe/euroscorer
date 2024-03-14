@@ -1,4 +1,4 @@
-import Chart from 'chart.js/auto'
+import Chart from 'chart.js/auto';
 
 // Dark mode
 const html = document.documentElement;
