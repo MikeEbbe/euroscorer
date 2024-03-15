@@ -61,6 +61,21 @@ class EditionCrudController extends CrudController
             'label' => 'City',
             'type' => 'text'
         ]);
+        CRUD::column([
+            'name' => 'semi_final_1_date',
+            'label' => 'Semi-Final 1 date',
+            'type' => 'datetime'
+        ]);
+        CRUD::column([
+            'name' => 'semi_final_2_date',
+            'label' => 'Semi-Final 2 date',
+            'type' => 'datetime'
+        ]);
+        CRUD::column([
+            'name' => 'final_date',
+            'label' => 'Final date',
+            'type' => 'datetime'
+        ]);
     }
 
     /**
@@ -96,6 +111,21 @@ class EditionCrudController extends CrudController
             'name' => 'city',
             'label' => 'City',
             'type' => 'text'
+        ]);
+        CRUD::field([
+            'name' => 'semi_final_1_date',
+            'label' => 'Semi-Final 1 date',
+            'type' => 'datetime',
+        ]);
+        CRUD::field([
+            'name' => 'semi_final_2_date',
+            'label' => 'Semi-Final 2 date',
+            'type' => 'datetime'
+        ]);
+        CRUD::field([
+            'name' => 'final_date',
+            'label' => 'Final date',
+            'type' => 'datetime'
         ]);
     }
 
@@ -133,6 +163,21 @@ class EditionCrudController extends CrudController
             'name' => 'city',
             'label' => 'City',
             'type' => 'text'
+        ]);
+        CRUD::column([
+            'name' => 'semi_final_1_date',
+            'label' => 'Semi-Final 1 date',
+            'type' => 'datetime'
+        ]);
+        CRUD::column([
+            'name' => 'semi_final_2_date',
+            'label' => 'Semi-Final 2 date',
+            'type' => 'datetime'
+        ]);
+        CRUD::column([
+            'name' => 'final_date',
+            'label' => 'Final date',
+            'type' => 'datetime'
         ]);
     }
 }
