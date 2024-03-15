@@ -50,7 +50,8 @@ class Edition extends Model
      */
     public static function getCurrentStage()
     {
-        $startDate = '03-01'; // March 1st
+        $year = 2024; # Current year
+        $startDate = '03-01'; // Date to start showing the year
 
         $currentDate = new DateTime(); // Get the current date
 
@@ -58,15 +59,13 @@ class Edition extends Model
         // $currentDate = DateTime::createFromFormat('Y-m-d\TH:i:s', "2024-05-10T21:01:00");
 
         // Check if it's before March 1st or not, and return the year
-        $clone = clone $currentDate;
-        $year = $currentDate->format('m-d') >= $startDate ? $currentDate->format('Y') : $clone->modify('-1 year')->format('Y');
 
         $edition = self::where('year', $year)->first();
 
-        // Get the dates for semi-final 1 and semi-final 2$currentDate = Carbon::createFromFormat('Y-m-d\TH:i', '2024-05-08T19:01', 'Europe/Amsterdam');
-        $semiFinal1Date = $edition->semi_final_1_date ? DateTime::createFromFormat('Y-m-d\TH:i', $edition->semi_final_1_date) : DateTime::createFromFormat('Y-m-d', "$year-05-07")->setTime(0, 0, 0);
-        $semiFinal2Date = $edition->semi_final_2_date ? DateTime::createFromFormat('Y-m-d\TH:i', $edition->semi_final_2_date) : DateTime::createFromFormat('Y-m-d', "$year-05-09")->setTime(0, 0, 0);
-
+        // Get the dates for semi-final 1 and semi-final 2
+        $semiFinal1Date = $edition->semi_final_1_date ? DateTime::createFromFormat(env('DATE_FORMAT'), $edition->semi_final_1_date) : DateTime::createFromFormat('Y-m-d', "$year-05-07")->setTime(0, 0, 0);
+        $semiFinal2Date = $edition->semi_final_2_date ? DateTime::createFromFormat(env('DATE_FORMAT'), $edition->semi_final_2_date) : DateTime::createFromFormat('Y-m-d', "$year-05-09")->setTime(0, 0, 0);
+        
         $semiFinal1Date->modify('+1 day');
         $semiFinal2Date->modify('+1 day');
 
