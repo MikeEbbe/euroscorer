@@ -84,6 +84,9 @@ erDiagram
         boolean is_in_final
         integer semi_final_order
         integer final_order
+        datetime semi_final_1_date
+        datetime semi_final_2_date
+        datetime final_date
     }
     EDITION |{--|| COUNTRY : "takes place in"
     EDITION {

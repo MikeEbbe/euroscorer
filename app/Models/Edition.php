@@ -45,12 +45,41 @@ class Edition extends Model
     }
 
     /**
+     * This method returns the year of the latest edition
+     */
+    public static function getLatestEdition()
+    {
+        $year = Edition::max('year');
+
+        return $year;
+    }
+
+    /**
+     * This method returns the date of the stage of an edition
+     * @param Int $year - Year of the edition
+     * @param Int $stage - The number of the semi-final (1 or 2)
+     */
+    public static function getStageDate($year, $stage)
+    {
+        $edition = self::where('year', $year)->first();
+
+        switch ($stage) {
+            case 1:
+                return DateTime::createFromFormat(env('DATE_FORMAT'), $edition->semi_final_1_date);
+            case 2:
+                return DateTime::createFromFormat(env('DATE_FORMAT'), $edition->semi_final_2_date);
+            default:
+                return DateTime::createFromFormat(env('DATE_FORMAT'), $edition->final_date);
+        }
+    }
+
+    /**
      * This method redirects the user to the most recent edition
      * of the Eurovision Song Contest.
      */
     public static function getCurrentStage()
     {
-        $year = 2024; # Current year
+        $year = Edition::max('year'); // Get latest year
         $startDate = '03-01'; // Date to start showing the year
 
         $currentDate = new DateTime(); // Get the current date
@@ -65,7 +94,7 @@ class Edition extends Model
         // Get the dates for semi-final 1 and semi-final 2
         $semiFinal1Date = $edition->semi_final_1_date ? DateTime::createFromFormat(env('DATE_FORMAT'), $edition->semi_final_1_date) : DateTime::createFromFormat('Y-m-d', "$year-05-07")->setTime(0, 0, 0);
         $semiFinal2Date = $edition->semi_final_2_date ? DateTime::createFromFormat(env('DATE_FORMAT'), $edition->semi_final_2_date) : DateTime::createFromFormat('Y-m-d', "$year-05-09")->setTime(0, 0, 0);
-        
+
         $semiFinal1Date->modify('+1 day');
         $semiFinal2Date->modify('+1 day');
 

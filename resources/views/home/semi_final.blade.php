@@ -13,6 +13,43 @@
         Halve Finale {{ $stage }}
     </h1>
 </div>
+
+<!-- Countdown timer -->
+@if($targetDate)
+<div id="countdown" class="my-6 md:my-12 flex justify-center items-center text-center">
+    <div class="grid grid-flow-col gap-2 lg:gap-3 text-center auto-cols-max">
+        <div
+            class="flex flex-col p-2 bg-neutral-content dark:bg-neutral text-neutral dark:text-neutral-content rounded-box text-sm lg:text-base">
+            <span class="countdown font-mono text-3xl lg:text-4xl">
+                <span id="days"></span>
+            </span>
+            dagen
+        </div>
+        <div
+            class="flex flex-col p-2 bg-neutral-content dark:bg-neutral text-neutral dark:text-neutral-content rounded-box text-sm lg:text-base">
+            <span class="countdown font-mono text-3xl lg:text-4xl">
+                <span id="hours"></span>
+            </span>
+            uur
+        </div>
+        <div
+            class="flex flex-col p-2 bg-neutral-content dark:bg-neutral text-neutral dark:text-neutral-content rounded-box text-sm lg:text-base">
+            <span class="countdown font-mono text-3xl lg:text-4xl">
+                <span id="minutes"></span>
+            </span>
+            min
+        </div>
+        <div
+            class="flex flex-col p-2 bg-neutral-content dark:bg-neutral text-neutral dark:text-neutral-content rounded-box text-sm lg:text-base">
+            <span class="countdown font-mono text-3xl lg:text-4xl">
+                <span id="seconds"></span>
+            </span>
+            sec
+        </div>
+    </div>
+</div>
+@endif
+
 <!-- Participants -->
 <div class="relative overflow-x-auto shadow-md rounded-t-lg md:rounded-t-xl">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -58,5 +95,11 @@
         </tbody>
     </table>
 </div>
+
+@if($targetDate)
+<script>
+    window.targetDate = "{{ $targetDate->format(env('DATE_FORMAT')) }}";
+</script>
+@endif
 
 @endsection

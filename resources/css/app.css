@@ -18,3 +18,8 @@ input[type=password] {
     width: 100% !important;
     height: auto !important;
 }
+
+/* Disable countdown transition */
+#days::before, #hours::before, #minutes::before, #seconds::before {
+    transition-duration: 0s;
+}

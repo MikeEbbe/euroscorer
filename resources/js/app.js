@@ -115,6 +115,37 @@ if (hamburgerIcon) {
 }
 
 /**
+ * Countdown to date
+ */
+const targetDate = new Date(window.targetDate).getTime();
+// const targetDate = new Date().getTime() + 5000; // Mock time
+
+const countdown = setInterval(() => {
+    const now = new Date().getTime();
+
+    // Calculate the time remaining
+    const distance = targetDate - now;
+
+    // Calculate days, hours, minutes, and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Update the HTML elements with the remaining time
+    document.getElementById("days").style = '--value:' + days + ';';
+    document.getElementById("hours").style = '--value:' + hours + ';';
+    document.getElementById("minutes").style = '--value:' + minutes + ';';
+    document.getElementById("seconds").style = '--value:' + seconds + ';';
+
+    // If the countdown is finished, clearInterval to stop the countdown
+    if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").remove();
+    }
+}, 1000); // Update every second
+
+/**
  * Stats
  */
 if (typeof stats !== 'undefined') {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Edition;
 use App\Models\Participant;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -34,8 +35,18 @@ class SemiFinalController extends Controller
         $user = Auth::user();
         $scores = $this->scoresByUserYearAndStage($user, $year, $stage);
         $edition = Edition::where('year', $year)->first();
+        if ($year == Edition::max('year') && $stage == 1) {
+            // Get date of semi-final 1 of upcoming edition
+            $currentDate = new DateTime();
+            $targetDate = $edition->getStageDate($year, $stage);
+            if ($currentDate >= $targetDate) {
+                $targetDate = null;
+            }
+        } else {
+            $targetDate = null;
+        }
 
-        return view('home.semi_final', compact('scores', 'edition', 'stage'));
+        return view('home.semi_final', compact('scores', 'edition', 'stage', 'targetDate'));
     }
 
     /**
