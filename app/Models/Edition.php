@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Carbon\Carbon;
 use DateTime;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
@@ -52,6 +52,19 @@ class Edition extends Model
         $year = Edition::max('year');
 
         return $year;
+    }
+
+    /**
+     * This method returns the editions that the user has access to.
+     * This is determined by whether the user has any scores tied
+     * to the participants of the edition.
+     * @param User $user
+     */
+    public static function getAccesibleToUser($user)
+    {
+        return self::whereHas('participants.scores', function (Builder $query) use ($user) {
+            $query->where('user_id', $user->id);
+        });
     }
 
     /**
