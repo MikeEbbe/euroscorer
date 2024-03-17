@@ -32,7 +32,7 @@ class RegisterController extends Controller
         $user = User::create($request->validated());
 
         $participants = Participant::whereHas('edition', function ($query) {
-            $query->where('year', Edition::max('year'));
+            $query->where('year', Edition::getYearOfLatestEdition());
         })
         ->get();
 

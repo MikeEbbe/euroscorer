@@ -47,7 +47,7 @@ class Edition extends Model
     /**
      * This method returns the year of the latest edition
      */
-    public static function getLatestEdition()
+    public static function getYearOfLatestEdition()
     {
         $year = Edition::max('year');
 
@@ -79,7 +79,7 @@ class Edition extends Model
      */
     public static function getCurrentStage()
     {
-        $year = Edition::max('year'); // Get latest year
+        $year = self::getYearOfLatestEdition(); // Get latest year
         $startDate = '03-01'; // Date to start showing the year
 
         $currentDate = new DateTime(); // Get the current date

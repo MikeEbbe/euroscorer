@@ -35,7 +35,7 @@ class SemiFinalController extends Controller
         $user = Auth::user();
         $scores = $this->scoresByUserYearAndStage($user, $year, $stage);
         $edition = Edition::where('year', $year)->first();
-        if ($year == Edition::max('year') && $stage == 1) {
+        if ($year == Edition::getYearOfLatestEdition() && $stage == 1) {
             // Get date of semi-final 1 of upcoming edition
             $currentDate = new DateTime();
             $targetDate = $edition->getStageDate($year, $stage);
