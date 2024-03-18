@@ -21,9 +21,12 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -p 22 -t ed25519 ${{ secrets.ARTIFACT_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Check folder
+        run: |
+          ls -la
+
       - name: Deploy to server
         run: |
-          cd /var/www/html2/eurovision
           git pull
           composer install --no-ansi --no-interaction --no-progress --prefer-dist
           php artisan migrate --force
