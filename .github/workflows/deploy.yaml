@@ -25,6 +25,9 @@ jobs:
         run: |
           ssh -i $HOME/.ssh/id_ed25519 -p 22 ${{ secrets.ARTIFACT_USERNAME }}@${{ secrets.ARTIFACT_HOST }} <<'ENDSSH'
           cd /var/www/html2/eurovision
+          whoami
+          id -gn
+          groups
           git pull
           composer install --no-ansi --no-interaction --no-progress --prefer-dist
           php artisan migrate --force
