@@ -298,4 +298,4 @@ To deploy a new release on the production environment, go to the `/var/www/[html
 
 8. `npm run build`
 
-In V2 this release strategy will be automated using a continuous delivery pipeline.
+In V2 this release strategy is being automated using a continuous delivery pipeline.
