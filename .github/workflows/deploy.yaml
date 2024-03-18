@@ -15,11 +15,11 @@ jobs:
 
       - name: SSH into server and deploy
         run: |
-          ssh -i ${{ secrets.ARTIFACT_SSH_KEY }} ${{ secrets.ARTIFACT_HOST }}@${{ secrets.ARTIFACT_USERNAME }} 'bash -s' << 'EOF'
+          ssh -i ${{ secrets.ARTIFACT_SSH_KEY }} ${{ secrets.ARTIFACT_USERNAME }}@${{ secrets.ARTIFACT_HOST }} <<'ENDSSH'
           cd /var/www/html2/eurovision
           git pull
           composer install --no-ansi --no-interaction --no-progress --prefer-dist
           php artisan migrate --force
           npm install
           npm run build
-EOF
+          ENDSSH
