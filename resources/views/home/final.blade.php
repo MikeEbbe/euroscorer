@@ -51,7 +51,10 @@
                     $score->total }}</td>
                 <td class="pl-1 pr-2 py-1 md:px-6 md:py-4 text-gray-900 dark:text-white">
                     <a href="/{{ $edition->year }}/score/{{ $score->id }}"
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Bewerken</a>
+                        class="font-medium hover:underline">
+                        <x-icon name="pencil-square" class="w-6 h-6 lg:hidden" />
+                        <span class="hidden lg:inline text-blue-600 dark:text-blue-500">Bewerken</span>
+                    </a>
                 </td>
             </tr>
             @endforeach
