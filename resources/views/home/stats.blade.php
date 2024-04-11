@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 @else
-                <p class="block text-gray-900 font-medium dark:text-white">Nog geen data beschikbaar.</p>
+                <p class="block text-gray-500 dark:text-gray-400 font-medium">Nog geen data beschikbaar.</p>
                 @endif
             </div>
         </div>
@@ -150,7 +150,7 @@
                     </div>
                 </div>
                 @else
-                <p class="block text-gray-900 font-medium dark:text-white">Nog geen data beschikbaar.</p>
+                <p class="block text-gray-500 dark:text-gray-400 font-medium">Nog geen data beschikbaar.</p>
                 @endif
             </div>
         </div>
