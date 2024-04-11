@@ -51,7 +51,7 @@
 @endif
 
 <!-- Participants -->
-<div class="relative overflow-x-auto shadow-md rounded-t-lg md:rounded-t-xl">
+<div class="relative overflow-x-auto shadow-md rounded-t-lg md:rounded-t-xl mx-2 md:mx-6">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -69,7 +69,7 @@
             @foreach ($scores as $score)
             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                 <td
-                    class="border-b @if($loop->iteration <= 10) bg-green-700 border-green-700 @else bg-red-500 border-red-500 @endif">
+                    class="border-b w-2 @if($loop->iteration <= 10) bg-green-700 border-green-700 @else bg-red-500 border-red-500 @endif">
                 </td>
                 <td class="pr-1 pl-3 py-3 md:w-4 md:px-5 md:py-3">
                     <img class="max-h-[22px] md:max-h-[26px] w-auto border border-gray-300"
