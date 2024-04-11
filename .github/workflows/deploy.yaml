@@ -23,11 +23,9 @@ jobs:
 
       - name: SSH into server and deploy
         run: |
-          eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/id_ed25519
           ssh -i $HOME/.ssh/id_ed25519 -p 22 ${{ secrets.ARTIFACT_USERNAME }}@${{ secrets.ARTIFACT_HOST }} <<'ENDSSH'
           cd /var/www/html2/eurovision
-          echo ${{ secrets.USER_PWD }} | sudo -S git pull
+          git pull
           composer install --no-ansi --no-interaction --no-progress --prefer-dist
           php artisan migrate --force
           export NVM_DIR=~/.nvm
