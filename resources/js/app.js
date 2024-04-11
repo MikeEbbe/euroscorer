@@ -10,7 +10,10 @@ const lightIcon = document.getElementById('toggle-light-icon');
 // Navbar
 const dropdownContainers = document.querySelectorAll('.dropdown-container');
 const navigation = document.querySelector('#navigation');
-const hamburgerIcon = document.querySelector('#hamburger-icon');
+const hamburgerOpenIcon = document.querySelector('#hamburger-open-icon');
+const hamburgerCloseIcon = document.querySelector('#hamburger-close-icon');
+
+const countdownElement = document.getElementById("countdown");
 
 let setModeValue = localStorage.getItem('mode') || 'dark'; // User's set mode
 html.classList.add('hidden'); // Hide app until it's done applying the mode
@@ -101,15 +104,18 @@ dropdownContainers.forEach(dropdownContainer => {
 function toggleHamburger() {
     navigation.classList.toggle('hidden');
     navigation.classList.toggle('flex');
-    hamburgerIcon.children[0].classList.toggle('hidden');
-    hamburgerIcon.children[1].classList.toggle('hidden');
+    hamburgerOpenIcon.classList.toggle('hidden');
+    hamburgerCloseIcon.classList.toggle('hidden');
 }
 
 /**
  * Hamburger menu functionality
  */
-if (hamburgerIcon) {
-    hamburgerIcon.addEventListener('click', function () {
+if (hamburgerOpenIcon && hamburgerCloseIcon) {
+    hamburgerOpenIcon.addEventListener('click', function () {
+        toggleHamburger();
+    });
+    hamburgerCloseIcon.addEventListener('click', function () {
         toggleHamburger();
     });
 }
@@ -117,33 +123,35 @@ if (hamburgerIcon) {
 /**
  * Countdown to date
  */
-const targetDate = new Date(window.targetDate).getTime();
-// const targetDate = new Date().getTime() + 5000; // Mock time
+if(countdownElement) {
+    const targetDate = new Date(window.targetDate).getTime();
+    // const targetDate = new Date().getTime() + 5000; // Mock time
 
-const countdown = setInterval(() => {
-    const now = new Date().getTime();
+    const countdown = setInterval(() => {
+        const now = new Date().getTime();
 
-    // Calculate the time remaining
-    const distance = targetDate - now;
+        // Calculate the time remaining
+        const distance = targetDate - now;
 
-    // Calculate days, hours, minutes, and seconds
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Update the HTML elements with the remaining time
-    document.getElementById("days").style = '--value:' + days + ';';
-    document.getElementById("hours").style = '--value:' + hours + ';';
-    document.getElementById("minutes").style = '--value:' + minutes + ';';
-    document.getElementById("seconds").style = '--value:' + seconds + ';';
+        // Update the HTML elements with the remaining time
+        document.getElementById("days").style = '--value:' + days + ';';
+        document.getElementById("hours").style = '--value:' + hours + ';';
+        document.getElementById("minutes").style = '--value:' + minutes + ';';
+        document.getElementById("seconds").style = '--value:' + seconds + ';';
 
-    // If the countdown is finished, clearInterval to stop the countdown
-    if (distance < 0) {
-        clearInterval(countdown);
-        document.getElementById("countdown").remove();
-    }
-}, 1000); // Update every second
+        // If the countdown is finished, clearInterval to stop the countdown
+        if (distance < 0) {
+            clearInterval(countdown);
+            document.getElementById("countdown").remove();
+        }
+    }, 1000); // Update every second
+}
 
 /**
  * Stats
