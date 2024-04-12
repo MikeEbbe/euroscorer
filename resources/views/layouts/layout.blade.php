@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark hidden">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 
 <head>
     <meta charset="utf-8">
@@ -13,6 +13,11 @@
 
     <!-- Core CSS + Tailwind -->
     @vite('resources/css/app.css')
+    
+    <script>
+        const setModeValue = localStorage.getItem('mode') || 'dark';
+        document.documentElement.classList.toggle('dark', setModeValue === 'dark');
+    </script>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">

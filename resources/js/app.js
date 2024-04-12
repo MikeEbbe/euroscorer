@@ -16,7 +16,6 @@ const hamburgerCloseIcon = document.querySelector('#hamburger-close-icon');
 const countdownElement = document.getElementById("countdown");
 
 let setModeValue = localStorage.getItem('mode') || 'dark'; // User's set mode
-html.classList.add('hidden'); // Hide app until it's done applying the mode
 
 /**
  * When the toggle mode button is clicked, 
@@ -51,8 +50,6 @@ function setMode(mode) {
 
     // Store the set mode in user's local storage
     localStorage.setItem('mode', mode);
-    // Show the app
-    html.classList.remove('hidden');
 }
 
 /**
