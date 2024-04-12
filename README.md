@@ -1,4 +1,4 @@
-<p align="center"><a href="https://eurovision.584791601.xyz" target="_blank"><img src="https://eurovision.584791601.xyz/storage/app-logo-stroke.png" width="400" alt="EuroScorer Logo"></a></p>
+<p align="center"><a href="https://eurovision.584791601.xyz" target="_blank"><img src="https://euroscorer.584791601.xyz/app-logo-stroke.png" width="400" alt="EuroScorer Logo"></a></p>
 
 
 
@@ -246,9 +246,9 @@ The next step is to create an SSL certificate using certbot. This will secure th
 
 2. In a terminal run `wsl` to open WSL 2.
 
-3. In WSL 2, go to the project directory and run `./vendor/bin/sail up` to start the Docker container.
+3. In WSL 2, go to the project directory and run `./vendor/bin/sail up` or simply `sail up` to start the Docker container.
 
-4. Open a new terminal, go to the project directory and run `npm run dev` to build the project.
+4. Open a new terminal, go to the project directory and run `npm run dev` to build the project. The project is now available on [localhost](http://localhost).
 
 
 ### Production
@@ -276,11 +276,13 @@ The next step is to create an SSL certificate using certbot. This will secure th
 
 
 
-## Releasing
+## Releasing manually
 
 
 
-To deploy a new release on the production environment, go to the `/var/www/[html directory]/[app name]` directory and run the following commands:
+In V2 a CI/CD pipeline has been implemented into the project, using GitHub Actions. Upon pushing changes to the repository, the server will automatically pull the latest changes, install PHP dependencies and JavaScript packages, and then build the project. The pipeline file can be located at `/.github/workflows/deploy.yaml`.
+
+However, if you want to deploy a new release on the production environment yourself, you can also do it manually. Go to the `/var/www/[html directory]/[app name]` directory and run the following commands:
 
 1. `sudo git pull` - this will prompt you for a sudo password and GitHub credentials
 
@@ -297,5 +299,3 @@ To deploy a new release on the production environment, go to the `/var/www/[html
 7. `npm install`
 
 8. `npm run build`
-
-In V2 this release strategy is being automated using a continuous delivery pipeline.
