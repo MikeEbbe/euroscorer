@@ -30,11 +30,18 @@ class NavigationServiceProvider extends ServiceProvider
             $user = Auth::user();
             $editions = Edition::getAccesibleToUser($user)->orderByDesc('year')->get();
 
+            // Split editions into main and archived
+            $total = $editions->count();
+            $showArchive = $total > 5;
+            $mainEditions = $showArchive ? $editions->take(4) : $editions;
+            $archivedEditions = $showArchive ? $editions->slice(4) : collect();
+
             // Also include username
             $username = $user->username;
 
             $view->with([
-                'editions' => $editions,
+                'mainEditions' => $mainEditions,
+                'archivedEditions' => $archivedEditions,
                 'username' => $username,
             ]);
         });

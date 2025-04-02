@@ -45,11 +45,22 @@ class Edition extends Model
     }
 
     /**
-     * This method returns the year of the latest edition
+     * This method returns the year of the current edition
      */
-    public static function getYearOfLatestEdition()
+    public static function getYearOfCurrentEdition()
     {
-        $year = Edition::max('year');
+        $currentDate = new DateTime();
+        $currentYear = $currentDate->format('Y');
+        $editionThisYear = Edition::where('year', $currentYear)->first();
+        $editionThisYearDate = DateTime::createFromFormat(config('vars.date_format'), $editionThisYear->semi_final_1_date);
+
+        if($currentDate > $editionThisYearDate) {
+            // Event year is next year
+            $year = $currentYear + 1;
+        } else {
+            // Event year is this year
+            $year = $currentYear;
+        }
 
         return $year;
     }
@@ -78,11 +89,11 @@ class Edition extends Model
 
         switch ($stage) {
             case 1:
-                return DateTime::createFromFormat(env('DATE_FORMAT'), $edition->semi_final_1_date);
+                return DateTime::createFromFormat(config('vars.date_format'), $edition->semi_final_1_date);
             case 2:
-                return DateTime::createFromFormat(env('DATE_FORMAT'), $edition->semi_final_2_date);
+                return DateTime::createFromFormat(config('vars.date_format'), $edition->semi_final_2_date);
             default:
-                return DateTime::createFromFormat(env('DATE_FORMAT'), $edition->final_date);
+                return DateTime::createFromFormat(config('vars.date_format'), $edition->final_date);
         }
     }
 
@@ -92,7 +103,7 @@ class Edition extends Model
      */
     public static function getCurrentStage()
     {
-        $year = self::getYearOfLatestEdition(); // Get latest year
+        $year = self::getYearOfCurrentEdition(); // Get current year
         $startDate = '03-01'; // Date to start showing the year
 
         $currentDate = new DateTime(); // Get the current date
@@ -105,8 +116,8 @@ class Edition extends Model
         $edition = self::where('year', $year)->first();
 
         // Get the dates for semi-final 1 and semi-final 2
-        $semiFinal1Date = $edition->semi_final_1_date ? DateTime::createFromFormat(env('DATE_FORMAT'), $edition->semi_final_1_date) : DateTime::createFromFormat('Y-m-d', "$year-05-07")->setTime(0, 0, 0);
-        $semiFinal2Date = $edition->semi_final_2_date ? DateTime::createFromFormat(env('DATE_FORMAT'), $edition->semi_final_2_date) : DateTime::createFromFormat('Y-m-d', "$year-05-09")->setTime(0, 0, 0);
+        $semiFinal1Date = $edition->semi_final_1_date ? DateTime::createFromFormat(config('vars.date_format'), $edition->semi_final_1_date) : DateTime::createFromFormat('Y-m-d', "$year-05-07")->setTime(0, 0, 0);
+        $semiFinal2Date = $edition->semi_final_2_date ? DateTime::createFromFormat(config('vars.date_format'), $edition->semi_final_2_date) : DateTime::createFromFormat('Y-m-d', "$year-05-09")->setTime(0, 0, 0);
 
         $semiFinal1Date->modify('+1 day');
         $semiFinal2Date->modify('+1 day');

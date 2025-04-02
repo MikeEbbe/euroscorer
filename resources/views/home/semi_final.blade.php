@@ -101,7 +101,7 @@
 
 @if($targetDate)
 <script>
-    window.targetDate = "{{ $targetDate->format(env('DATE_FORMAT')) }}";
+    window.targetDate = "{{ $targetDate->format(config('vars.date_format')) }}";
 </script>
 @endif
 

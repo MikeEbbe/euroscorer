@@ -14,7 +14,8 @@
         <!-- Navigation links -->
         <nav id="navigation" class="flex-col flex-grow pt-0 pb-3 xl:py-3 hidden xl:flex xl:flex-row">
             <!-- Generate menu items for each year -->
-            @foreach($editions as $edition)
+            @foreach($mainEditions as $edition)
+            <!-- If more than 5, only show latest 4 and condense the earlier editions under an archive button -->
             <div class="dropdown-container relative">
                 <div class="toggle-dropdown">
                     <button
@@ -39,6 +40,29 @@
                 </div>
             </div>
             @endforeach
+            @if($archivedEditions->isNotEmpty())
+            <div class="dropdown-container relative">
+                <div class="toggle-dropdown">
+                    <button
+                        class="dropdown flex flex-row w-full px-4 py-2 mt-2 text-sm font-medium rounded-lg xl:w-auto xl:inline xl:mt-0 xl:ml-4 text-gray-900 xl:hover:text-blue-700 dark:text-white xl:dark:hover:text-blue-500">
+                        <a href="/#">Archief</a>
+                        <x-icon name="chevron-down"
+                            class="dropdown-icon inline xl:w-4 xl:h-4 w-6 w-6 mt-0 ml-1 transition-transform duration-200 transform xl:-mt-1" />
+                    </button>
+                </div>
+                <div
+                    class="dropdown-menu-items hidden relative xl:absolute w-full xl:origin-top-left xl:left-1/2 xl:transform xl:-translate-x-1/2 rounded-md xl:w-36">
+                    <div
+                        class="px-4 py-2 xl:bg-gray-50 bg-gray-200 rounded-md xl:shadow-lg z-10 divide-y divide-gray-200 xl:dark:bg-gray-800 dark:bg-gray-700 dark:divide-gray-700">
+                        @foreach($archivedEditions as $archivedEdition)
+                        <a class="block py-3 xl:mt-0 text-sm font-medium text-gray-800 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500"
+                            href="/{{ $archivedEdition->year }}/final">{{ $archivedEdition->city }} {{
+                            $archivedEdition->year }}</a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            @endif
 
             <div class="xl:ml-auto flex flex-col xl:flex-row">
                 <!-- Logout button -->
