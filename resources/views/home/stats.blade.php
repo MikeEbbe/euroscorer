@@ -158,15 +158,15 @@
     <!-- Song/act disparity -->
     <div class="w-full col-span-1 xl:col-span-3 text-center px-2 xl:px-0">
         <span class="block text-gray-900 font-medium dark:text-white">Hoe liedjes zich verhouden tot acts</span>
-        <span class="block text-gray-500 dark:text-gray-400 mb-2">Gemiddeld genomen hebben deze landen een beter liedje
-            dan act.</span>
+        <span class="block text-gray-500 dark:text-gray-400 mb-2">Gemiddeld genomen hebben deze landen een <span class="text-gray-900 dark:text-white">beter liedje
+            dan act.</span></span>
         <canvas class="w-full" id="song-act-disparity-chart"></canvas>
     </div>
     <!-- Act/song disparity -->
     <div class="w-full col-span-1 xl:col-span-3 text-center px-2 xl:px-0">
         <span class="block text-gray-900 font-medium dark:text-white">Hoe acts zich verhouden tot liedjes</span>
-        <span class="block text-gray-500 dark:text-gray-400 mb-2">Gemiddeld genomen hebben deze landen een betere act
-            dan liedje.</span>
+        <span class="block text-gray-500 dark:text-gray-400 mb-2">Gemiddeld genomen hebben deze landen een <span class="text-gray-900 dark:text-white">betere act
+            dan liedje.</span></span>
         <canvas class="w-full" id="act-song-disparity-chart"></canvas>
     </div>
 </div>
