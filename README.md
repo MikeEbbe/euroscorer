@@ -2,7 +2,7 @@
 
 Introducing EuroScorer: a Dutch web app made for Eurovision fans that simplifies the grading process of Eurovision songs! EuroScorer allows you to assign scores to Eurovision entries and automatically organizes them.
 
-<p align="center"><img src="docs/images/EuroScorer-1.png" width="400" alt="EuroScorer Logo"></p>
+![Dashboard](docs/images/EuroScorer-1.png "EuroScorer")
 
 EuroScorer is built with PHP Laravel, and makes assigning scores to Eurovision acts an effortless task. Simply register on the app, select the participant you want to grade, and give a score for the song and the performance. The app instantly updates your scores, and shows your top 10 semi-finalists or your top 5 finalists.
 
@@ -10,7 +10,7 @@ Designed with Tailwind CSS, EuroScorer has a sleek dark mode option, allowing yo
 
 Access EuroScorer from any device, and enjoy the perfect companion while watching Eurovision, or take a look how the average user feels about songs on the statistics page!
 
-<p align="center"><img src="docs/images/EuroScorer-2.png" width="400" alt="EuroScorer Logo"></p>
+![Dashboard](docs/images/EuroScorer-2.png "Statistics")
 
 
 
