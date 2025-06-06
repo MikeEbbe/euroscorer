@@ -1,14 +1,16 @@
-<p align="center"><a href="https://eurovision.584791601.xyz" target="_blank"><img src="https://euroscorer.584791601.xyz/app-logo-stroke.png" width="400" alt="EuroScorer Logo"></a></p>
+<p align="center"><a href="https://eurovision.584791601.xyz" target="_blank"><img src="public/app-logo-stroke.png" width="400" alt="EuroScorer Logo"></a></p>
 
+Introducing EuroScorer: a Dutch web app made for Eurovision fans that simplifies the grading process of Eurovision songs! EuroScorer allows you to assign scores to Eurovision entries and automatically organizes them.
 
+<p align="center"><img src="docs/images/EuroScorer-1.png" width="400" alt="EuroScorer Logo"></p>
 
-Introducing EuroScorer - a web app made for Eurovision fans that simplifies the grading process of Eurovision songs! Designed with the user in mind, EuroScorer allows you to assign scores to Eurovision entries and automatically organizes them.
+EuroScorer is built with PHP Laravel, and makes assigning scores to Eurovision acts an effortless task. Simply register on the app, select the participant you want to grade, and give a score for the song and the performance. The app instantly updates your scores, and shows your top 10 semi-finalists or your top 5 finalists.
 
-With its modern interface, EuroScorer makes assigning scores to Eurovision acts an effortless task. Simply register on the app, select the participant you want to grade, and give a score for the song and the performance. The app instantly updates your scores, and shows your top 10 semi-finalists or your top 5 finalists.
+Designed with Tailwind CSS, EuroScorer has a sleek dark mode option, allowing you to enjoy optimal viewing conditions according to your preference!
 
-EuroScorer has a sleek dark mode option, allowing you to enjoy optimal viewing conditions according to your preference!
+Access EuroScorer from any device, and enjoy the perfect companion while watching Eurovision, or take a look how the average user feels about songs on the statistics page!
 
-Access EuroScorer from any device, and enjoy the perfect companion while watching Eurovision. But that's not all - EuroScorer also provides detailed statistics, such as the average highest and lowest rated songs across the user base. These insights can help users gain a deeper understanding of what other Eurovision fans think of the entries. Join the EuroScorer community today and experience Eurovision grading like never before!
+<p align="center"><img src="docs/images/EuroScorer-2.png" width="400" alt="EuroScorer Logo"></p>
 
 
 

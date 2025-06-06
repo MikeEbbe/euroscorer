@@ -13,7 +13,13 @@ class HomeController extends Controller
     public function index()
     {
         $currentStage = Edition::getCurrentStage();
-        
-        return redirect()->route($currentStage['route'], ['year' => $currentStage['year'], 'stage' => $currentStage['stage'] ?? null]);
+
+        return redirect()->route(
+            $currentStage['route'],
+            array_filter([
+                'year' => $currentStage['year'] ?? null,
+                'stage' => $currentStage['stage'] ?? null
+            ])
+        );
     }
 }

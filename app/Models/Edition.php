@@ -52,17 +52,28 @@ class Edition extends Model
         $currentDate = new DateTime();
         $currentYear = $currentDate->format('Y');
         $editionThisYear = Edition::where('year', $currentYear)->first();
-        $editionThisYearDate = DateTime::createFromFormat(config('vars.date_format'), $editionThisYear->semi_final_1_date);
 
-        if($currentDate > $editionThisYearDate) {
-            // Event year is next year
-            $year = $currentYear + 1;
-        } else {
-            // Event year is this year
-            $year = $currentYear;
+        if (!$editionThisYear || !$editionThisYear->final_date) {
+            return $currentYear;
         }
 
-        return $year;
+        try {
+
+            $editionFinalDate = DateTime::createFromFormat(config('vars.date_format'), $editionThisYear->semi_final_1_date);
+
+            if (!$editionFinalDate) {
+                // Date format parsing failed, fallback to current year
+                return $currentYear;
+            }
+
+            $editionFinalDate->modify('+6 months');
+
+            return $currentDate > $editionFinalDate ? $currentYear + 1 : $currentYear;
+
+            return $year;
+        } catch (\Exception $error) {
+            return $currentYear;
+        }
     }
 
     /**
@@ -104,34 +115,50 @@ class Edition extends Model
     public static function getCurrentStage()
     {
         $year = self::getYearOfCurrentEdition(); // Get current year
-        $startDate = '03-01'; // Date to start showing the year
-
         $currentDate = new DateTime(); // Get the current date
 
         // Mock date for testing
         // $currentDate = DateTime::createFromFormat('Y-m-d\TH:i:s', "2024-05-10T21:01:00");
 
-        // Check if it's before March 1st or not, and return the year
-
         $edition = self::where('year', $year)->first();
 
-        // Get the dates for semi-final 1 and semi-final 2
-        $semiFinal1Date = $edition->semi_final_1_date ? DateTime::createFromFormat(config('vars.date_format'), $edition->semi_final_1_date) : DateTime::createFromFormat('Y-m-d', "$year-05-07")->setTime(0, 0, 0);
-        $semiFinal2Date = $edition->semi_final_2_date ? DateTime::createFromFormat(config('vars.date_format'), $edition->semi_final_2_date) : DateTime::createFromFormat('Y-m-d', "$year-05-09")->setTime(0, 0, 0);
+        if (!$edition) {
+            // Fallback to previous year and final stage
+            $fallbackYear = $year - 1;
+            return ['route' => 'final.index', 'year' => $fallbackYear];
+        }
 
-        $semiFinal1Date->modify('+1 day');
-        $semiFinal2Date->modify('+1 day');
+        try {
+            // Get the dates for semi-final 1 and semi-final 2
+            $semiFinal1Date = $edition->semi_final_1_date ? DateTime::createFromFormat(config('vars.date_format'), $edition->semi_final_1_date) : DateTime::createFromFormat('Y-m-d', "$year-05-07")->setTime(0, 0, 0);
+            $semiFinal2Date = $edition->semi_final_2_date ? DateTime::createFromFormat(config('vars.date_format'), $edition->semi_final_2_date) : DateTime::createFromFormat('Y-m-d', "$year-05-09")->setTime(0, 0, 0);
 
-        // Check which stage is the next upcoming stage
-        if ($currentDate <= $semiFinal1Date) {
-            // Next upcoming stage is Semi-Final 1
-            return ['route' => 'semi-final.index', 'year' => $year, 'stage' => 1];
-        } elseif ($currentDate <= $semiFinal2Date) {
-            // Next upcoming stage is Semi-Final 2
-            return ['route' => 'semi-final.index', 'year' => $year, 'stage' => 2];
-        } else {
-            // Next upcoming stage is Final
-            return ['route' => 'final.index', 'year' => $year];
+             // Fallback to default if parsing failed
+            if (!$semiFinal1Date) {
+                $semiFinal1Date = new DateTime("$year-05-07");
+            }
+
+            if (!$semiFinal2Date) {
+                $semiFinal2Date = new DateTime("$year-05-09");
+            }
+
+            $semiFinal1Date->modify('+1 day');
+            $semiFinal2Date->modify('+1 day');
+
+            // Check which stage is the next upcoming stage
+            if ($currentDate <= $semiFinal1Date) {
+                // Next upcoming stage is Semi-Final 1
+                return ['route' => 'semi-final.index', 'year' => $year, 'stage' => 1];
+            } elseif ($currentDate <= $semiFinal2Date) {
+                // Next upcoming stage is Semi-Final 2
+                return ['route' => 'semi-final.index', 'year' => $year, 'stage' => 2];
+            } else {
+                // Next upcoming stage is Final
+                return ['route' => 'final.index', 'year' => $year];
+            }
+        } catch (\Exception $error) {
+            // Date parsing fails, use fallback
+            return ['route' => 'final.index', 'year' => $year - 1];
         }
     }
 }
